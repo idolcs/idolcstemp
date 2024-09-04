@@ -1,4 +1,5 @@
 import MainWrapper from "../../Layout/MainWrapper";
+import About from "./About/About";
 import JoinCommunity from "./JoinCommunity/JoinCommunity";
 import LatestUpdates from "./LatestUpdates/LatestUpdates";
 import SelectSemester from "./SelectSemester/SelectSemester";
@@ -14,6 +15,7 @@ const Home = () => {
             <SelectSemester />
             <LatestUpdates />
             <JoinCommunity />
+            <About  />
 
         </>
     );
