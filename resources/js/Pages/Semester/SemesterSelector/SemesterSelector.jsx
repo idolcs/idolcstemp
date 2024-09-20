@@ -3,24 +3,18 @@ import React, { useRef, useState } from "react";
 import SemesterButton from "../../Home/SelectSemester/SemesterButton/SemesterButton";
 import ChangeSemester from "./ChangeSemester/ChangeSemester";
 
-const SemesterSelector = ({ semNumber }) => {
+const SemesterSelector = ({ semNumber, activeSemesters }) => {
 
     const [semSelectorVisible, setSemSelectorVisible] = useState(false);
 
-    const semesters = [
-        {
-            title: "Semester 1",
-            target: "/1"
-        },
-        {
-            title: "Semester 2",
-            target: "/2"
-        },
-        {
-            title: "Semester 3",
-            target: "/3"
-        }
-    ]
+    let semesters = [];
+
+    for(let i = 0; i < activeSemesters; i++){
+        semesters.push({
+            title: `Semester ${i + 1}`,
+            target: `/${i + 1}`
+        })
+    }
 
     const changeSemester = (e) => {
         setSemSelectorVisible(true);
@@ -46,5 +40,6 @@ const SemesterSelector = ({ semNumber }) => {
         </>
     );
 };
+
 
 export default SemesterSelector;

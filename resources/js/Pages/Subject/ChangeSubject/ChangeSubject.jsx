@@ -6,6 +6,8 @@ const ChangeSubject = ({
     subjects,
 }) => {
 
+    console.log(subjects);
+
     return (
         <>
             <div
@@ -20,7 +22,7 @@ const ChangeSubject = ({
                         {subjects.map((sem) => (
                             <SemesterButton
                                 title={sem.name}
-                                target={sem.subjectId}
+                                target={sem.code}
                             />
                         ))}
                     </div>

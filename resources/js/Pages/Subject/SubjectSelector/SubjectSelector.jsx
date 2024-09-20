@@ -2,32 +2,9 @@ import downArrow from "../../../../../public/assets/downArrow.svg";
 import ChangeSubject from "../ChangeSubject/ChangeSubject";
 import React, { useRef, useState } from "react";
 
-const SubjectSelector = ({name}) => {
+const SubjectSelector = ({name, subjects}) => {
 
     const [subSelectorVisible, setSubSelectorVisible] = useState(false);
-
-    const subjects = [
-        {
-            name: "Programming in Python",
-            subjectId: "201"
-        },
-        {
-            name: "Programming in C",
-            subjectId: "202"
-        },
-        {
-            name: "Computer Organisation and Design",
-            subjectId: "203"
-        },
-        {
-            name: "Database Systems",
-            subjectId: "204"
-        },
-        {
-            name: "Introduction to Algorithms",
-            subjectId: "205"
-        }
-    ]
 
     const changeSubject = (e) => {
         setSubSelectorVisible(true);

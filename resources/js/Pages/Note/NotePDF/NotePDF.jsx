@@ -18,7 +18,7 @@ const NotePDF = () => {
                     frameborder="0"
                 ></iframe>
             </div>
-            <div className='mt-6'>
+            <div className='mt-4'>
                 <a
                 style={{
                     background: "rgb(217,217,217)",
@@ -27,7 +27,7 @@ const NotePDF = () => {
                 }}
                 className=" text-[#86A800] block p-3 border border-[#224D00] rounded-lg mt-2"
                 
-                href={pdf} download>Download this file</a>
+                href={pdf} download>Download the PDF</a>
             </div>
         </>
     );

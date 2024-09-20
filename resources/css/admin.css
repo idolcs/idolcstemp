@@ -1,0 +1,8 @@
+.admin-table{
+    overflow: scroll
+}
+
+.admin-table td, .admin-table th{
+    @apply p-2 whitespace-nowrap;
+    text-align: left;
+}

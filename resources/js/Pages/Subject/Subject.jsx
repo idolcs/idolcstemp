@@ -3,11 +3,12 @@ import NotesList from "./NotesList/NotesList";
 import ResourcesList from "./ResourcesList/ResourcesList";
 import SubjectSelector from "./SubjectSelector/SubjectSelector";
 
-const Subject = ({name}) => {
+const Subject = ({name, subjects, semester}) => {
+    
     return (
         <>
-            <p className="opacity-70">Semester 1</p>
-            <SubjectSelector name={name} />
+            <p className="opacity-70">Semester {semester}</p>
+            <SubjectSelector name={name} subjects={subjects}/>
             <NotesList />
             <ResourcesList />
         </>
