@@ -1,7 +1,8 @@
-import pdf from "../../../../../public/assets/201-4 Textbook Annotations.pdf";
-// import { EmbedPDF } from "@simplepdf/react-embed-pdf";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const NotePDF = () => {
+const NotePDF = ({url}) => {
+
     return (
         <>
             <div
@@ -14,7 +15,7 @@ const NotePDF = () => {
             >
                 <iframe
                     className="w-full min-h-full"
-                    src={pdf}
+                    src={`/api/v1/download/${url}`}
                     frameborder="0"
                 ></iframe>
             </div>
@@ -27,7 +28,7 @@ const NotePDF = () => {
                 }}
                 className=" text-[#86A800] block p-3 border border-[#224D00] rounded-lg mt-2"
                 
-                href={pdf} download>Download the PDF</a>
+                href={`/api/v1/download/${url}`} download>Download the PDF</a>
             </div>
         </>
     );

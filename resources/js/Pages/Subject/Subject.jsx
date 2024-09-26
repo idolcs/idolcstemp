@@ -3,14 +3,16 @@ import NotesList from "./NotesList/NotesList";
 import ResourcesList from "./ResourcesList/ResourcesList";
 import SubjectSelector from "./SubjectSelector/SubjectSelector";
 
-const Subject = ({name, subjects, semester}) => {
+const Subject = ({name, subjects, semester, notes, links}) => {
+
+    console.log(notes);
     
     return (
         <>
             <p className="opacity-70">Semester {semester}</p>
             <SubjectSelector name={name} subjects={subjects}/>
-            <NotesList />
-            <ResourcesList />
+            <NotesList notes={notes} />
+            <ResourcesList links={links} />
         </>
     )
 }

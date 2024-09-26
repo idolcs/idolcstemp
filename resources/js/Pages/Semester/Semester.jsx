@@ -3,12 +3,12 @@ import SemesterSelector from "./SemesterSelector/SemesterSelector";
 import SemUpdates from "./SemUpdates/SemUpdates";
 import SubjectSelector from "./SubjectSelector/SubjectSelector";
 
-const Semester = ({semNumber, subjects, activeSemesters}) => {
+const Semester = ({semNumber, subjects, activeSemesters, updates}) => {
     return (
         <>
             <SemesterSelector activeSemesters={activeSemesters} semNumber={semNumber} />
             <SubjectSelector subjects={subjects} />
-            <SemUpdates semNumber={semNumber} />
+            <SemUpdates semNumber={semNumber}  updates={updates}/>
         </>
     )
 }

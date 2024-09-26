@@ -4,7 +4,7 @@ import JoinCommunity from "./JoinCommunity/JoinCommunity";
 import LatestUpdates from "./LatestUpdates/LatestUpdates";
 import SelectSemester from "./SelectSemester/SelectSemester";
 
-const Home = ({activeSemesters}) => {
+const Home = ({activeSemesters, updates}) => {
     return (
         <>
             <p>
@@ -13,7 +13,7 @@ const Home = ({activeSemesters}) => {
             </p>
 
             <SelectSemester  activeSemesters={activeSemesters} />
-            <LatestUpdates />
+            <LatestUpdates updates={updates} />
             <JoinCommunity />
             <About  />
 

@@ -3,6 +3,10 @@ import MainWrapper from "../../Layout/MainWrapper";
 import ManageMembers from "./ManageMembers/ManageMembers";
 import ManageSemesters from "./ManageSemesters/ManageSemesters";
 import ManageSubjects from "./ManageSubjects/ManageSubjects";
+import ManageUpdates from "./ManageUpdates/ManageUpdates";
+import ManageNotes from "./ManageNotes/ManageNotes";
+import ManageLinks from "./ManageLinks/ManageLinks";
+import ManageRedirects from "./ManageRedirects/ManageRedirects";
 
 const Admin = () => {
     const [isAuthorised, setIsAuthorised] = useState(false);
@@ -48,10 +52,14 @@ const Admin = () => {
     return (
         <>
             <div>
-                <p className="text-[1.5em] font-bold">Admin Dashboard</p>
+                <p className="text-[1.5em] font-bold mb-8">Admin Dashboard</p>
+                <ManageRedirects isSuperAdmin={isSuperAdmin} isAdmin={isAuthorised} />
                 <ManageMembers isSuperAdmin={isSuperAdmin} setIsSuperAdmin={setIsSuperAdmin} />
                 <ManageSemesters isSuperAdmin={isSuperAdmin} />
                 <ManageSubjects isSuperAdmin={isSuperAdmin} />
+                <ManageUpdates isSuperAdmin={isSuperAdmin} isAdmin={isAuthorised} />
+                <ManageNotes  isSuperAdmin={isSuperAdmin} isAdmin={isAuthorised} />
+                <ManageLinks isSuperAdmin={isSuperAdmin} isAdmin={isAuthorised}/>
             </div>
         </>
     );

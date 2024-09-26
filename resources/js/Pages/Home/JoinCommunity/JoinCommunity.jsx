@@ -7,15 +7,15 @@ const JoinCommunity = () => {
     const socials = [
         {
             icon: whatsappLogo,
-            target: "",
+            target: "https://chat.whatsapp.com/FdwxqYbVH1yBlu2tHxJvIG",
         },
         {
             icon: telegramLogo,
-            target: "",
+            target: "https://ttttt.me/idol_cs",
         },
         {
             icon: githubLogo,
-            target: "",
+            target: "https://github.com/idolcs",
         },
     ];
 
@@ -26,9 +26,9 @@ const JoinCommunity = () => {
                 <div className="flex mt-4">
                     {socials.map((sm) => {
                         return (
-                            <Link href={sm.target}>
+                            <a href={sm.target}>
                                 <img className="h-[2.2em] mr-2" src={sm.icon} alt="" />
-                            </Link>
+                            </a>
                         );
                     })}
                 </div>

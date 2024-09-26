@@ -10,7 +10,7 @@ const NoteItem = ({note}) => {
                         "linear-gradient(12deg, rgba(217,217,217,0.1) 0%, rgba(0,212,255,0) 50%)",
                 }}
                 className="block p-3 border border-[#535353] rounded-lg mt-2"
-                href={"/note"}
+                href={`/note/${note.id}`}
             >
                 {note.title}
                 
