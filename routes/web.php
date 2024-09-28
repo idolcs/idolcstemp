@@ -32,7 +32,7 @@ Route::get("/note/{noteId}", function(string $noteid){
 });
 
 Route::get("/updates", function(){
-    $updates = Update::where("approved", true)->get(["slug", "title", "semester"]);
+    $updates = Update::where("approved", true)->latest()->get(["slug", "title", "semester"]);
     return Inertia::render("Updates/Updates", ["data" => $updates]);
 });
 
@@ -118,7 +118,7 @@ Route::get("/{semesterOrSubject}", function (HttpRequest $request, string $semes
     ) {
         $config = Config::first();
         $subjects = Subject::where("semester", $semesterOrSubject)->orderBy("code", "ASC")->get(['name', 'code']);
-        $updates = Update::where("semester", $semesterOrSubject)->where("approved", true)->get(); 
+        $updates = Update::where("semester", $semesterOrSubject)->where("approved", true)->latest()->get(); 
         return Inertia::render("Semester/Semester", ['semNumber' => $semesterOrSubject, 'subjects' => $subjects, 'activeSemesters' => $config->active_semesters, "updates" => $updates]);
     } else if (
         strlen($semesterOrSubject) == 3 &&
