@@ -27,7 +27,8 @@ Route::get("/temp", function () {
 
 Route::get("/note/{noteId}", function(string $noteid){
     $note = Resource::where("id", $noteid)->first();
-    return Inertia::render("Note/Note", ["note" => $note]);
+    $subject = Subject::where("code", $note->subject)->first();
+    return Inertia::render("Note/Note", ["note" => $note, "subject" => $subject]);
 });
 
 Route::get("/updates", function(){
@@ -55,10 +56,6 @@ Route::get("/r/{redirectId}", function(HttpRequest $request, string $redirect_id
     }
     return redirect($redirect->url);
 });
-
-// Route::get("/post", function(){
-//     return Inertia::render("Post/Post");
-// });
 
 Route::prefix("/account")->group(function(){
 
@@ -108,7 +105,6 @@ Route::prefix("auth")->group(function(){
 
 Route::prefix("utils")->group(function(){
     Route::get("/savetoken", function(HttpRequest $request){
-        // return dd($request->token);
         return Inertia::render('Utils/SaveToken', ["token" => $request->token]);
     });
 });
