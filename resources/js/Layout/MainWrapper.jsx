@@ -5,22 +5,6 @@ import axios from "axios";
 
 const MainWrapper = ({ children }) => {
 
-    useEffect(() => {
-        // Set the page title
-        document.title = "IDOL CS";
-
-        // Set the favicon
-        const link = document.createElement("link");
-        link.rel = "icon";
-        link.href = IdolcsLogo;
-        document.head.appendChild(link);
-
-        // Cleanup to remove the favicon link if necessary
-        return () => {
-            document.head.removeChild(link);
-        };
-    }, []);
-
     const [isAuthorised, setIsAuthorised] = useState(false);
 
     useEffect(() => {
