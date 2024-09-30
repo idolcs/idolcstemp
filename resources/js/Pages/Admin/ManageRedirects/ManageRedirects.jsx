@@ -80,7 +80,7 @@ const ManageRedirects = ({ isSuperAdmin, isAdmin }) => {
                         className="py-2 px-8 bg-green-800">Submit</button>
                     </div>
                 </div>
-                <div className="p-2">
+                <div className="p-2 rounded overflow-x-auto">
                             <table className="admin-table">
                                 <thead>
                                     <tr>

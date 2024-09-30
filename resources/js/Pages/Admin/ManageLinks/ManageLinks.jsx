@@ -112,7 +112,7 @@ const ManageLinks = ({isAdmin, isSuperAdmin}) => {
         <>
             <div className="my-8 p-4 border border-[#757575] rounded">
                 <p>Manage Links</p>
-                <div className="p-4 border my-3  border-[#757575] rounded">
+                <div className="p-4 border my-3  border-[#757575]">
                     <p>Create new link</p>
                     <div className="p-2">
                         <select
@@ -175,7 +175,7 @@ const ManageLinks = ({isAdmin, isSuperAdmin}) => {
                             }}
                         />
                     </div>
-                    <div className="p-2">
+                    <div className="p-2 rounded overflow-x-auto">
                         <input
                             type="text"
                             className="bg-gray-800 p-2 w-full"
