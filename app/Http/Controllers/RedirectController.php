@@ -37,7 +37,7 @@ class RedirectController extends Controller
 
     public function getLastTen(Request $request){
 
-        $redirects = Redirect::latest()->take(10)->get();
+        $redirects = Redirect::latest("id")->take(10)->get();
         return Response($redirects, 200);
 
     }
