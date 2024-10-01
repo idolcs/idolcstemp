@@ -44,7 +44,7 @@ Route::prefix("/v1")->group(function () {
         Route::prefix("/note")->group(function () {
             Route::post("/new", [ResourceController::class, "newResource"]);
             Route::get("/get", [ResourceController::class, "getResource"]);
-            Route::middleware(SuperAdminVerify::class)->post("/delete", [ResourceController::class, "deleteResource"]);
+            Route::post("/delete", [ResourceController::class, "deleteResource"]);
         });
         Route::prefix("/link")->group(function(){
             Route::post("/new", [LinkController::class, "newLink"]);

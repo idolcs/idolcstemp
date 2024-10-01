@@ -86,7 +86,17 @@ class ResourceController extends Controller
 
     public function getResource(Request $request)
     {
-        $resources = Resource::all();
+
+        $user = User::where("remember_token", $request->bearerToken())->first();
+
+        if($user->superadmin){
+            global $resources;
+            $resources = Resource::all();
+        }else{
+            global $resources;
+            $resources = Resource::where("author_email", $user->email)->get();
+        }
+
         return Response($resources, 200);
     }
 
@@ -107,6 +117,22 @@ class ResourceController extends Controller
             return Response([
                 "msg" => "Resource not found"
             ], 404);
+        }
+
+        $user = User::where("remember_token", $request->bearerToken())->first();
+
+        if(!$user){
+            return Response(
+                [
+                    "msg" => "Invalid user"
+                ], 404
+            );
+        }
+
+        if(!($resource->author_email == $user->email) && !($user->superadmin)){
+            return Response([
+                "msg" => "You are not the author of this post"
+            ], 401);
         }
 
         $fileUrl = $resource->file;

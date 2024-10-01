@@ -197,8 +197,6 @@ const ManageNotes = ({ isAdmin, isSuperAdmin }) => {
                         </button>
                     </div>
                 </div>
-
-                {isSuperAdmin ? (
                     <div className="p-2">
                         <table className="admin-table">
                             <thead>
@@ -234,7 +232,6 @@ const ManageNotes = ({ isAdmin, isSuperAdmin }) => {
                             </tbody>
                         </table>
                     </div>
-                ) : null}
             </div>
         </>
     );
