@@ -25,6 +25,19 @@ Route::get("/temp", function () {
     return "Hello World";
 });
 
+Route::get("/about-us", function(){
+    return Inertia::render("StaticPages/AboutUs");
+});
+
+Route::get("/privacy-policy", function(){
+    return Inertia::render("StaticPages/PrivacyPolicy");
+});
+
+Route::get("/terms-and-conditions", function(){
+    return Inertia::render("StaticPages/TermsAndConditions");
+});
+
+
 Route::get("/note/{noteId}", function(string $noteid){
     $note = Resource::where("id", $noteid)->first();
     $subject = Subject::where("code", $note->subject)->first();

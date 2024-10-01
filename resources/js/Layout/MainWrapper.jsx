@@ -39,6 +39,13 @@ const MainWrapper = ({ children }) => {
                             <Link href="/">Home</Link>
                             <Link href="/account">My Account</Link>
                             {isAuthorised ? (<Link href="/admin">Admin</Link>) : null}
+                        </div>
+                        <div className="flex gap-4 text-[0.9em] mt-2">
+                            <Link href="/about-us">About Us</Link>
+                            <Link href="/privacy-policy">Privacy Policy</Link>
+                            <Link href="/terms-and-conditions">Terms and Conditions</Link>
+                            
+                            {/* {isAuthorised ? (<Link href="/admin">Admin</Link>) : null} */}
                             {/* <Link href="/contact">Contact Us</Link> */}
                         </div>
                     </div>
