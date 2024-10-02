@@ -34,6 +34,11 @@ class SubjectController extends Controller
         return Response($subjects, 200);
     }
 
+    public function getSubjects(Request $request){
+        $subjects = Subject::all();
+        return Response($subjects, 200);
+    }
+
     public function deleteSubject(Request $request){
         
         $body = json_decode($request->getContent(), true);

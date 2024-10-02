@@ -41,6 +41,7 @@ Route::prefix("/v1")->group(function () {
     Route::prefix("/admin")->middleware(AdminVerify::class)->group(function () {
         Route::post("/new-update", [UpdateController::class, "newUpdate"]);
         Route::get("/getsubjectsbysemester", [SubjectController::class, "getSubjectsBySem"]);
+        Route::get('/getsubjects', [SubjectController::class, "getSubjects"]);
         Route::prefix("/note")->group(function () {
             Route::post("/new", [ResourceController::class, "newResource"]);
             Route::get("/get", [ResourceController::class, "getResource"]);

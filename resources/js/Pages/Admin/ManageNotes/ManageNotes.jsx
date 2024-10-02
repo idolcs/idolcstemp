@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import deleteIcon from "../../../../../public/assets/red-delete-svgrepo-com.svg";
 
 const ManageNotes = ({ isAdmin, isSuperAdmin }) => {
@@ -7,11 +7,12 @@ const ManageNotes = ({ isAdmin, isSuperAdmin }) => {
         return null;
     }
 
-    const [semester, setSemester] = useState("");
-    const [subject, setSubject] = useState("");
+    const subjectSelectRef = useRef();
+
+    const [semester, setSemester] = useState(1);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [subjects, setSubjects] = useState([]);
+    const [subjects, setSubjects] = useState([[], [], [], [], [], []]);
     const [file, setFile] = useState();
     const [notes, setNotes] = useState([]);
     const [noteRefresh, setNoteRefresh] = useState(0);
@@ -56,12 +57,9 @@ const ManageNotes = ({ isAdmin, isSuperAdmin }) => {
             });
     }, [noteRefresh]);
 
-    const loadSubjects = (e) => {
-        const semester = e.target.value;
-        setSemester(semester);
-
+    useEffect(() => {
         axios
-            .get(`/api/v1/admin/getsubjectsbysemester?semester=${semester}`, {
+            .get(`/api/v1/admin/getsubjects`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem(
                         "remember_token"
@@ -69,26 +67,32 @@ const ManageNotes = ({ isAdmin, isSuperAdmin }) => {
                 },
             })
             .then((res) => {
-                setSubjects(res.data);
+                let newSubjects = [[], [], [], [], [], []];
+                res.data.map((sub) => {
+                    newSubjects[sub.semester - 1].push(sub)
+                })
+                setSubjects(newSubjects);
             })
             .catch((err) => {
                 console.error(err);
             });
+    }, []);
+
+    const loadSubjects = (e) => {
+        const semester = e.target.value;
+        setSemester(semester);
     };
 
     const handleFile = (e) => {
-        console.log(e);
         if (e.target.files[0]) {
             setFile(e.target.files[0]);
         }
     };
 
-    console.log(file);
-
     const postNote = () => {
         let formData = new FormData();
         formData.append("file", file);
-        formData.append("subject", subject);
+        formData.append("subject", subjectSelectRef.current.value);
         formData.append("semester", semester);
         formData.append("title", title);
         formData.append("description", description);
@@ -124,7 +128,7 @@ const ManageNotes = ({ isAdmin, isSuperAdmin }) => {
                             name=""
                             id=""
                         >
-                            <option selected disabled>
+                            <option defaultChecked disabled>
                                 -- Select Semester --
                             </option>
                             <option value="1">Semester 1</option>
@@ -137,17 +141,15 @@ const ManageNotes = ({ isAdmin, isSuperAdmin }) => {
                     </div>
                     <div className="p-2">
                         <select
-                            onChange={(e) => {
-                                setSubject(e.target.value);
-                            }}
+                            ref={subjectSelectRef}
                             className="bg-gray-800 p-2 w-full "
                             name=""
                             id=""
                         >
-                            <option selected disabled value="">
+                            <option defaultChecked disabled value="">
                                 -- Select Subject --
                             </option>
-                            {subjects.map((subject) => {
+                            {subjects[parseInt(semester) - 1].map((subject) => {
                                 return (
                                     <>
                                         <option value={subject.code}>
@@ -197,41 +199,50 @@ const ManageNotes = ({ isAdmin, isSuperAdmin }) => {
                         </button>
                     </div>
                 </div>
-                    <div className="p-2">
-                        <table className="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>Sem</th>
-                                    <th>Subject</th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {notes.map((note) => {
-                                    return (
-                                        <tr>
-                                            <td>{note.semester}</td>
-                                            <td>{note.subject}</td>
-                                            <td>{note.title}</td>
-                                            <td>{note.author_name}</td>
-                                            <td>
-                                                <img
-                                                    onClick={(e) => {
-                                                        deleteNote(note.id);
-                                                    }}
-                                                    className="opacity-60 hover:opacity-100 h-[1em] cursor-pointer"
-                                                    src={deleteIcon}
-                                                    alt=""
-                                                />
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
+                <div className="p-2">
+                    <table className="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Sem</th>
+                                <th>Subject Code</th>
+                                <th>Subject Name</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {notes.map((note) => {
+                                const subjectObj = subjects[
+                                    note.semester - 1
+                                ].find((o) => o.code === note.subject);
+                                return (
+                                    <tr>
+                                        <td>{note.semester}</td>
+                                        <td>{note.subject}</td>
+                                        <td>
+                                            {subjectObj
+                                                ? subjectObj.name
+                                                : null}
+                                        </td>
+                                        <td>{note.title}</td>
+                                        <td>{note.author_name}</td>
+                                        <td>
+                                            <img
+                                                onClick={(e) => {
+                                                    deleteNote(note.id);
+                                                }}
+                                                className="opacity-60 hover:opacity-100 h-[1em] cursor-pointer"
+                                                src={deleteIcon}
+                                                alt=""
+                                            />
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </>
     );
