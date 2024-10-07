@@ -19,12 +19,18 @@ Route::prefix("/v1")->group(function () {
             if (!Storage::exists($filePath)) {
                 abort(404, 'File not found');
             }
+            $extension = explode('.', $filePath)[array_key_last(explode('.', $filePath))];
+            if($extension == "html" || $extension == "htm"){
+                $content_type = 'text/html';
+            }else if($extension == "pdf"){
+                $content_type = 'application/pdf';
+            }
             $stream = Storage::readStream($filePath);
             return response()->stream(function () use ($stream) {
                 fpassthru($stream);
                 fclose($stream);
             }, 200, [
-                'Content-Type' => 'application/pdf',
+                'Content-Type' => $content_type,
                 'Content-Disposition' => 'inline; filename="' . basename($filePath) . '"'
             ]);
         });
