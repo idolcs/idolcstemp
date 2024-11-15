@@ -1,17 +1,11 @@
 import whatsappLogo from "../../../../../public/assets/whatsapp.svg";
-import telegramLogo from "../../../../../public/assets/telegram.svg";
 import githubLogo from "../../../../../public/assets/github.svg";
-import { Link } from "@inertiajs/react";
 
 const JoinCommunity = () => {
     const socials = [
         {
             icon: whatsappLogo,
             target: "https://chat.whatsapp.com/FdwxqYbVH1yBlu2tHxJvIG",
-        },
-        {
-            icon: telegramLogo,
-            target: "https://ttttt.me/idol_cs",
         },
         {
             icon: githubLogo,
