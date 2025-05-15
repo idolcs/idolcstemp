@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Models\Config;
 use App\Models\Link;
@@ -14,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Socialite\Facades\Socialite;
 
-Route::get('/', function () {
+Route::get('/', function (HttpRequest $request) {
+
+    
+    $calendarData = EventController::getEvents($request);
     $updates = Update::latest()->where("approved", true)->take(3)->get();
     $config = Config::first();
-    return Inertia::render("Home/Home", ["activeSemesters" => $config->active_semesters, "updates" => $updates]);
+    return Inertia::render("Home/Home", ["activeSemesters" => $config->active_semesters, "updates" => $updates, "calendarData" => $calendarData]);
 });
 
 

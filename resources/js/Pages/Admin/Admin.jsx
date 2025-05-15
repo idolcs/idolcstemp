@@ -7,6 +7,7 @@ import ManageUpdates from "./ManageUpdates/ManageUpdates";
 import ManageNotes from "./ManageNotes/ManageNotes";
 import ManageLinks from "./ManageLinks/ManageLinks";
 import ManageRedirects from "./ManageRedirects/ManageRedirects";
+import ManageEvents from "./ManageEvents/ManageEvents";
 
 const Admin = () => {
     const [isAuthorised, setIsAuthorised] = useState(false);
@@ -54,12 +55,13 @@ const Admin = () => {
             <div>
                 <p className="text-[1.5em] font-bold mb-8">Admin Dashboard</p>
                 <ManageRedirects isSuperAdmin={isSuperAdmin} isAdmin={isAuthorised} />
-                <ManageMembers isSuperAdmin={isSuperAdmin} setIsSuperAdmin={setIsSuperAdmin} />
+                <ManageEvents isSuperAdmin={isSuperAdmin} isAdmin={isAuthorised} />
                 <ManageSemesters isSuperAdmin={isSuperAdmin} />
                 <ManageSubjects isSuperAdmin={isSuperAdmin} />
                 <ManageUpdates isSuperAdmin={isSuperAdmin} isAdmin={isAuthorised} />
                 <ManageNotes  isSuperAdmin={isSuperAdmin} isAdmin={isAuthorised} />
                 <ManageLinks isSuperAdmin={isSuperAdmin} isAdmin={isAuthorised}/>
+                <ManageMembers isSuperAdmin={isSuperAdmin} setIsSuperAdmin={setIsSuperAdmin} />
             </div>
         </>
     );

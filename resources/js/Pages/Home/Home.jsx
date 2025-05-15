@@ -1,10 +1,11 @@
 import MainWrapper from "../../Layout/MainWrapper";
 import About from "./About/About";
+import Calendar from "./Calendar/Calendar";
 import JoinCommunity from "./JoinCommunity/JoinCommunity";
 import LatestUpdates from "./LatestUpdates/LatestUpdates";
 import SelectSemester from "./SelectSemester/SelectSemester";
 
-const Home = ({activeSemesters, updates}) => {
+const Home = ({activeSemesters, updates, calendarData}) => {
     return (
         <>
             <p>
@@ -14,6 +15,7 @@ const Home = ({activeSemesters, updates}) => {
 
             <SelectSemester  activeSemesters={activeSemesters} />
             <LatestUpdates updates={updates} />
+            <Calendar data={calendarData} />
             <JoinCommunity />
             <About  />
 

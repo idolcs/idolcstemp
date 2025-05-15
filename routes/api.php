@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ResourceController;
@@ -61,6 +62,9 @@ Route::prefix("/v1")->group(function () {
         Route::prefix("/redirect")->group(function(){
             Route::post("/new", [RedirectController::class, "newRedirect"]);
             Route::get("/get/last10", [RedirectController::class, "getLastTen"]);
+        });
+        Route::prefix("/events")->group(function(){
+            Route::post("/new", [EventController::class, "newEvent"]);
         });
     });
 
