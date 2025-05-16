@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import MainWrapper from "../../Layout/MainWrapper";
 import About from "./About/About";
 import Calendar from "./Calendar/Calendar";
@@ -6,6 +7,20 @@ import LatestUpdates from "./LatestUpdates/LatestUpdates";
 import SelectSemester from "./SelectSemester/SelectSemester";
 
 const Home = ({activeSemesters, updates, calendarData}) => {
+
+    // if scrollTo is present in the URL, scroll to that y axis position
+
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const scrollTo = urlParams.get("scrollTo");
+        if (scrollTo) {
+            const y = parseInt(scrollTo);
+            window.scrollTo(0, y);
+        }
+    }
+    , []);
+    
+
     return (
         <>
             <p>

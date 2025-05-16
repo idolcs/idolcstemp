@@ -65,6 +65,8 @@ Route::prefix("/v1")->group(function () {
         });
         Route::prefix("/events")->group(function(){
             Route::post("/new", [EventController::class, "newEvent"]);
+            Route::post("/delete", [EventController::class, "deleteEvent"]);
+            Route::get("/getAll", [EventController::class, "getAllEvents"]);
         });
     });
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DeleteEvents from "./DeleteEvents";
 
 const ManageEvents = () => {
     const [semester, setSemester] = useState(1);
@@ -141,6 +142,7 @@ const ManageEvents = () => {
                         </button>
                     </div>
                 </div>
+                <DeleteEvents />
             </div>
         </>
     );

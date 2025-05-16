@@ -13,6 +13,6 @@ body{
     font-style: normal;
     user-select: none;
     background: url("../../public/assets/books-bg.avif") hsl(0, 0%, 4%);
-    background-blend-mode: darken;
+    /* background-blend-mode: darken; */
     background-size: 200px;
 }

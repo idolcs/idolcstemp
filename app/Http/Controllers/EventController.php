@@ -107,4 +107,32 @@ class EventController extends Controller
         ]);
     }
 
+    public static function deleteEvent(Request $request)
+    {
+        $request->validate([
+            "id" => "required|integer"
+        ]);
+
+        $event = Event::find($request->input("id"));
+        if (!$event) {
+            return response()->json([
+                "msg" => "Event not found",
+            ], 404);
+        }
+
+        $event->delete();
+
+        return response()->json([
+            "msg" => "Event deleted successfully",
+        ]);
+    }
+    
+    public static function getAllEvents(Request $request)
+    {
+        $events = Event::all();
+        return response()->json([
+            "events" => $events
+        ]);
+    }
+
 }
