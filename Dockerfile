@@ -4,7 +4,9 @@ FROM php:8.2-apache
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     libzip-dev \
-    zip && \
+    zip \
+    nodejs \
+    npm && \
     rm -rf /var/lib/apt/lists/* && \
     docker-php-ext-install pdo_mysql zip && \
     a2enmod rewrite && \
@@ -19,8 +21,10 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 COPY . /var/www/html/
 WORKDIR /var/www/html
 
+# Install PHP dependencies and Node.js dependencies, then build assets
 RUN composer install --no-dev --optimize-autoloader && \
+    npm install && \
+    npm run build && \
     chown -R www-data:www-data storage bootstrap/cache
 
-# Explicitly set the CMD
-# CMD ["apache2-foreground"]
+CMD ["apache2-foreground"]

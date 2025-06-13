@@ -35,6 +35,6 @@ services:
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
       - GOOGLE_REDIRECT=${GOOGLE_REDIRECT}
     ports:
-      - "8001:80"
+      - "80"
     volumes:
       - .:/var/www/html
