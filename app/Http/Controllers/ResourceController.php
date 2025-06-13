@@ -51,9 +51,12 @@ class ResourceController extends Controller
         $author_name = $author->name;
 
         $pdf = $request->file("file");
-        $fileName = "note/" . time() . '-' . $pdf->getClientOriginalName();
 
-        $operation1 = Storage::disk("local")->put($fileName, $pdf->getContent());
+        $fileName = time() . '-' . $pdf->getClientOriginalName();
+
+        // Upload to R2 instead of local
+        $operation1 = Storage::disk("r2")->put($fileName, file_get_contents($pdf));
+
 
         if (!$operation1) {
             return Response([
@@ -89,10 +92,10 @@ class ResourceController extends Controller
 
         $user = User::where("remember_token", $request->bearerToken())->first();
 
-        if($user->superadmin){
+        if ($user->superadmin) {
             global $resources;
             $resources = Resource::all();
-        }else{
+        } else {
             global $resources;
             $resources = Resource::where("author_email", $user->email)->get();
         }
@@ -101,11 +104,12 @@ class ResourceController extends Controller
     }
 
 
-    public function deleteResource(Request $request){
+    public function deleteResource(Request $request)
+    {
 
         $body = json_decode($request->getContent(), true);
 
-        if(!isset($body["id"])){
+        if (!isset($body["id"])) {
             return Response([
                 "msg" => "ID not provided"
             ], 401);
@@ -113,7 +117,7 @@ class ResourceController extends Controller
 
         $resource = Resource::where("id", $body["id"])->first();
 
-        if(!$resource){
+        if (!$resource) {
             return Response([
                 "msg" => "Resource not found"
             ], 404);
@@ -121,15 +125,16 @@ class ResourceController extends Controller
 
         $user = User::where("remember_token", $request->bearerToken())->first();
 
-        if(!$user){
+        if (!$user) {
             return Response(
                 [
                     "msg" => "Invalid user"
-                ], 404
+                ],
+                404
             );
         }
 
-        if(!($resource->author_email == $user->email) && !($user->superadmin)){
+        if (!($resource->author_email == $user->email) && !($user->superadmin)) {
             return Response([
                 "msg" => "You are not the author of this post"
             ], 401);
@@ -141,7 +146,7 @@ class ResourceController extends Controller
 
         $operation1 = $resource->delete();
 
-        if(!$operation1){
+        if (!$operation1) {
             return Response([
                 "msg" => "Failed to delete"
             ], 501);
@@ -150,8 +155,5 @@ class ResourceController extends Controller
         return Response([
             "msg" => "Success"
         ], 200);
-
     }
-
-
 }

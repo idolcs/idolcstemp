@@ -12,30 +12,64 @@ use App\Http\Middleware\SuperAdminVerify;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
+
 Route::prefix("/v1")->group(function () {
 
-    Route::prefix("/download")->group(function () {
-        Route::get("/note/{fileUrl}", function (string $fileUrl) {
-            $filePath = "note/" . $fileUrl;
-            if (!Storage::exists($filePath)) {
-                abort(404, 'File not found');
-            }
-            $extension = explode('.', $filePath)[array_key_last(explode('.', $filePath))];
-            if($extension == "html" || $extension == "htm"){
-                $content_type = 'text/html';
-            }else if($extension == "pdf"){
-                $content_type = 'application/pdf';
-            }
-            $stream = Storage::readStream($filePath);
-            return response()->stream(function () use ($stream) {
-                fpassthru($stream);
-                fclose($stream);
-            }, 200, [
-                'Content-Type' => $content_type,
-                'Content-Disposition' => 'inline; filename="' . basename($filePath) . '"'
-            ]);
-        });
+    // Route::prefix("/download")->group(function () {
+    //     Route::get("/note/{fileUrl}", function (string $fileUrl) {
+    //         $filePath = "note/" . $fileUrl;
+    //         if (!Storage::exists($filePath)) {
+    //             abort(404, 'File not found');
+    //         }
+    //         $extension = explode('.', $filePath)[array_key_last(explode('.', $filePath))];
+    //         if($extension == "html" || $extension == "htm"){
+    //             $content_type = 'text/html';
+    //         }else if($extension == "pdf"){
+    //             $content_type = 'application/pdf';
+    //         }
+    //         $stream = Storage::readStream($filePath);
+    //         return response()->stream(function () use ($stream) {
+    //             fpassthru($stream);
+    //             fclose($stream);
+    //         }, 200, [
+    //             'Content-Type' => $content_type,
+    //             'Content-Disposition' => 'inline; filename="' . basename($filePath) . '"'
+    //         ]);
+    //     });
+    // });
+
+
+Route::prefix("/download")->group(function () {
+    Route::get("{fileUrl}", function (string $fileUrl) {
+        $filePath = $fileUrl;
+
+        // Use the R2 disk now
+        $disk = Storage::disk('r2');
+
+        if (!$disk->exists($filePath)) {
+            abort(404, 'File not found');
+        }
+
+        $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+
+        $content_type = match ($extension) {
+            'html', 'htm' => 'text/html',
+            'pdf' => 'application/pdf',
+            default => 'application/octet-stream'
+        };
+
+        $stream = $disk->readStream($filePath);
+
+        return response()->stream(function () use ($stream) {
+            fpassthru($stream);
+            fclose($stream);
+        }, 200, [
+            'Content-Type' => $content_type,
+            'Content-Disposition' => 'inline; filename="' . basename($filePath) . '"'
+        ]);
     });
+});
+
 
     Route::prefix("/user")->group(function () {
         Route::post("/verify-token", [UserController::class, "verifyRemeberToken"]);
