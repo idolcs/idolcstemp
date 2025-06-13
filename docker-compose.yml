@@ -36,5 +36,3 @@ services:
       - GOOGLE_REDIRECT=${GOOGLE_REDIRECT}
     ports:
       - "80"
-    volumes:
-      - .:/var/www/html
