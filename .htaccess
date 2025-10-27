@@ -1,33 +1,26 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # ------------------------------------------------------------------
-    # 1. Force HTTPS (even behind proxy – checks X-Forwarded-Proto)
-    # ------------------------------------------------------------------
+    # FORCE HTTPS (works behind any proxy)
     RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
     RewriteCond %{HTTPS} off
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
 
-    # ------------------------------------------------------------------
-    # 2. Route all requests to /public (Laravel entry point)
-    # ------------------------------------------------------------------
+    # Route all requests to /public
     RewriteCond %{REQUEST_URI} !^/public/
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ public/$1 [L]
-
-    # ------------------------------------------------------------------
-    # 3. Optional: Add trailing slash to directories (clean URLs)
-    # ------------------------------------------------------------------
-    # RewriteCond %{REQUEST_FILENAME} !-f
-    # RewriteCond %{REQUEST_URI} !#.*# [NC]
-    # RewriteCond %{REQUEST_URI} !(.*)/$
-    # RewriteRule ^(.*)$ $1/ [L,R=301]
 </IfModule>
 
-# ------------------------------------------------------------------
-# Security: Prevent directory listing & hide .env
-# ------------------------------------------------------------------
+# CORS fallback for any HTTP asset (prevents CORS error if mixed content slips through)
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|woff2?|ttf|eot|svg|png|jpe?g|gif|ico|json)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# Security
 Options -Indexes
 <Files .env>
     Order allow,deny
