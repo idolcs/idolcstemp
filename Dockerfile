@@ -24,5 +24,3 @@ RUN composer install --no-dev --optimize-autoloader && \
     npm run build && \
     chown -R www-data:www-data storage bootstrap/cache
 CMD ["apache2-foreground"]
- 
-this is my dockerfile
