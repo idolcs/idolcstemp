@@ -1,0 +1,1101 @@
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19-11.8.5-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: 
+-- ------------------------------------------------------
+-- Server version	11.8.5-MariaDB-ubu2404
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*M!100616 SET @OLD_NOTE_VERBOSITY=@@NOTE_VERBOSITY, NOTE_VERBOSITY=0 */;
+
+--
+-- Current Database: `idolcs2`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `idolcs2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci */;
+
+USE `idolcs2`;
+
+--
+-- Table structure for table `cache`
+--
+
+DROP TABLE IF EXISTS `cache`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cache` (
+  `key` varchar(255) NOT NULL,
+  `value` mediumtext NOT NULL,
+  `expiration` int(11) NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cache`
+--
+
+LOCK TABLES `cache` WRITE;
+/*!40000 ALTER TABLE `cache` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `cache` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `cache_locks`
+--
+
+DROP TABLE IF EXISTS `cache_locks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cache_locks` (
+  `key` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  `expiration` int(11) NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cache_locks`
+--
+
+LOCK TABLES `cache_locks` WRITE;
+/*!40000 ALTER TABLE `cache_locks` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `cache_locks` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `configs`
+--
+
+DROP TABLE IF EXISTS `configs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `configs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `active_semesters` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `configs`
+--
+
+LOCK TABLES `configs` WRITE;
+/*!40000 ALTER TABLE `configs` DISABLE KEYS */;
+set autocommit=0;
+INSERT INTO `configs` VALUES
+(1,6,NULL,NULL);
+/*!40000 ALTER TABLE `configs` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `events`
+--
+
+DROP TABLE IF EXISTS `events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `events` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `semester` int(11) NOT NULL,
+  `event_date` date NOT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events`
+--
+
+LOCK TABLES `events` WRITE;
+/*!40000 ALTER TABLE `events` DISABLE KEYS */;
+set autocommit=0;
+INSERT INTO `events` VALUES
+(1,'Repeater Examination','Repeater Examination for Sem 3',3,'2025-05-17','https://idolcs.com/note/225','2025-05-15 18:03:57','2025-05-15 18:03:57'),
+(3,'Repeater Examination','Repeater Examination for Sem 3',3,'2025-05-19','https://idolcs.com/note/225','2025-05-15 18:03:57','2025-05-15 18:03:57'),
+(4,'Repeater Examination','Repeater Examination for Sem 3',3,'2025-05-20','https://idolcs.com/note/225','2025-05-15 18:03:57','2025-05-15 18:03:57'),
+(5,'Repeater Examination','Repeater Examination for Sem 3',3,'2025-05-21','https://idolcs.com/note/225','2025-05-15 18:03:57','2025-05-15 18:03:57'),
+(6,'Repeater Examination','Repeater Examination for Sem 3',3,'2025-05-22','https://idolcs.com/note/225','2025-05-15 18:03:57','2025-05-15 18:03:57'),
+(7,'Repeater Examination','Repeater Examination for Sem 3',3,'2025-05-23','https://idolcs.com/note/225','2025-05-15 18:03:57','2025-05-15 18:03:57'),
+(10,'Repeater Examination','Repeater Examination for Sem 3',3,'2025-05-26','https://idolcs.com/note/225','2025-05-15 18:03:57','2025-05-15 18:03:57'),
+(11,'Mock Test','Mock Test for Internal Exams of Sem 4',4,'2025-06-02','https://idolcs.com/note/264','2025-05-16 10:56:31','2025-05-16 10:56:31'),
+(12,'Internal Exams','Internal Examinations for Sem 4',4,'2025-06-03','https://idolcs.com/note/264','2025-05-16 10:57:50','2025-05-16 10:57:50'),
+(13,'Internal Exams','Internal Examinations for Sem 4',4,'2025-06-04','https://idolcs.com/note/264','2025-05-16 10:57:50','2025-05-16 10:57:50'),
+(14,'Internal Exams','Internal Examinations for Sem 4',4,'2025-06-05','https://idolcs.com/note/264','2025-05-16 10:57:50','2025-05-16 10:57:50'),
+(18,'Internal Exams','Internal Examinations for Sem 4',4,'2025-06-09','https://idolcs.com/note/264','2025-05-16 10:57:50','2025-05-16 10:57:50'),
+(19,'Internal Exams','Internal Examinations for Sem 4',4,'2025-06-10','https://idolcs.com/note/264','2025-05-16 10:57:50','2025-05-16 10:57:50'),
+(20,'Internal Exams','Internal Examinations for Sem 4',4,'2025-06-11','https://idolcs.com/note/264','2025-05-16 10:57:50','2025-05-16 10:57:50'),
+(21,'Internal Exams','Internal Examinations for Sem 4',4,'2025-06-12','https://idolcs.com/note/264','2025-05-16 10:57:50','2025-05-16 10:57:50'),
+(22,'(Bhavans) Practical Examinations','New Schedule, old schedule was scrapped',4,'2025-06-06','https://idolcs.com/note/266','2025-06-04 17:16:13','2025-06-04 17:16:13'),
+(24,'(Bhavans) Practical Examinations','New Schedule, old schedule was scrapped',4,'2025-06-08','https://idolcs.com/note/266','2025-06-04 17:16:13','2025-06-04 17:16:13'),
+(25,'Sem 5 Exams','Written exams for Semester 5',5,'2025-12-30','https://cs.cdoe.in/note/284','2025-12-17 19:08:57','2025-12-17 19:08:57'),
+(26,'Sem 5 Exams','Written exams for Semester 5',5,'2025-12-31','https://cs.cdoe.in/note/284','2025-12-17 19:08:57','2025-12-17 19:08:57'),
+(28,'Sem 5 Exams','Written exams for Semester 5',5,'2026-01-02','https://cs.cdoe.in/note/284','2025-12-17 19:08:57','2025-12-17 19:08:57'),
+(29,'Sem 5 Exams','Written exams for Semester 5',5,'2026-01-03','https://cs.cdoe.in/note/284','2025-12-17 19:08:57','2025-12-17 19:08:57'),
+(31,'Sem 5 Exams','Written exams for Semester 5',5,'2026-01-05','https://cs.cdoe.in/note/284','2025-12-17 19:08:57','2025-12-17 19:08:57'),
+(32,'Internal Exam (Online)','Online Internal exams for Semester 5',5,'2026-01-08','https://cs.cdoe.in/note/292','2025-12-25 10:26:15','2025-12-25 10:26:15'),
+(33,'Internal Exam (Online)','Online Internal exams for Semester 5',5,'2026-01-09','https://cs.cdoe.in/note/292','2025-12-25 10:26:15','2025-12-25 10:26:15'),
+(36,'Internal Exam (Online)','Online Internal exams for Semester 5',5,'2026-01-12','https://cs.cdoe.in/note/292','2025-12-25 10:26:15','2025-12-25 10:26:15'),
+(37,'Internal Exam (Online)','Online Internal exams for Semester 5',5,'2026-01-13','https://cs.cdoe.in/note/292','2025-12-25 10:26:15','2025-12-25 10:26:15'),
+(38,'Internal Exam (Online)','Online Internal exams for Semester 5',5,'2026-01-14','https://cs.cdoe.in/note/292','2025-12-25 10:26:15','2025-12-25 10:26:15'),
+(39,'Arch of IOT Practical Session','Centre: CDOE Kalina, Time: 11 AM to 1 PM,',5,'2026-01-11','https://cs.cdoe.in','2026-01-08 07:02:55','2026-01-08 07:02:55');
+/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+DROP TABLE IF EXISTS `failed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `failed_jobs`
+--
+
+LOCK TABLES `failed_jobs` WRITE;
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `job_batches`
+--
+
+DROP TABLE IF EXISTS `job_batches`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job_batches` (
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `total_jobs` int(11) NOT NULL,
+  `pending_jobs` int(11) NOT NULL,
+  `failed_jobs` int(11) NOT NULL,
+  `failed_job_ids` longtext NOT NULL,
+  `options` mediumtext DEFAULT NULL,
+  `cancelled_at` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `finished_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_batches`
+--
+
+LOCK TABLES `job_batches` WRITE;
+/*!40000 ALTER TABLE `job_batches` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `job_batches` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `jobs`
+--
+
+DROP TABLE IF EXISTS `jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) unsigned NOT NULL,
+  `reserved_at` int(10) unsigned DEFAULT NULL,
+  `available_at` int(10) unsigned NOT NULL,
+  `created_at` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `jobs_queue_index` (`queue`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jobs`
+--
+
+LOCK TABLES `jobs` WRITE;
+/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `links`
+--
+
+DROP TABLE IF EXISTS `links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `links` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `semester` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `is_youtube` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `links`
+--
+
+LOCK TABLES `links` WRITE;
+/*!40000 ALTER TABLE `links` DISABLE KEYS */;
+set autocommit=0;
+INSERT INTO `links` VALUES
+(2,'1','104','DBMS Playlist','https://www.youtube.com/playlist?list=PLdo5W4Nhv31b33kF46f9aFjoJPOkdlsRc',1,'2024-09-26 21:48:08','2024-09-26 21:48:08'),
+(7,'1','102','[Lecture] 1','https://youtu.be/xkmDLCrSIZk',1,'2024-09-26 22:40:34','2024-09-26 22:40:34'),
+(8,'1','102','[Lecture] Python','https://youtu.be/u8sIokQJgsA',1,'2024-09-26 22:40:48','2024-09-26 22:40:48'),
+(9,'1','102','[Lecture] Syntax, Variables and More','https://www.youtube.com/watch?v=Sfp8wSI7L68',1,'2024-09-26 22:41:04','2024-09-26 22:41:04'),
+(10,'1','107','[Lecture] ','https://youtu.be/yBORWu8VXrY',1,'2024-09-26 22:41:36','2024-09-26 22:41:36'),
+(11,'1','102','[Lecture] Operators','https://www.youtube.com/watch?v=8BsMMdRbmUA',1,'2024-09-26 22:41:55','2024-09-26 22:41:55'),
+(13,'1','101','[Lecture] Basics of COD, Number System','https://youtu.be/XWOHPTFLRo4',1,'2024-09-26 22:42:36','2024-09-26 22:42:36'),
+(14,'1','102','[Lecture] Assert and Functions','https://youtu.be/YDIb47Op5DY',1,'2024-09-26 22:42:55','2024-09-26 22:42:55'),
+(15,'1','102','[Lecture] Functions','https://youtu.be/OnkdmetIHnk',1,'2024-09-26 22:43:16','2024-09-26 22:43:16'),
+(16,'1','101','[Lecture] Conversion of numbers and complements','https://youtu.be/lzaZa1AhwcU',1,'2024-09-26 22:43:43','2024-09-26 22:43:43'),
+(17,'1','101','[Lecture] Complements and Basic Logic Gates','https://youtu.be/_hl70ARphZA',1,'2024-09-26 22:44:05','2024-09-26 22:44:05'),
+(18,'1','101','[Lecture] NAND, NOR and Boolean Expressions','https://youtu.be/MKmiYGESbFk',1,'2024-09-26 22:44:23','2024-09-26 22:44:23'),
+(19,'1','102','[Lecture] More about Functions','https://youtu.be/Bd8x0J111Lk',1,'2024-09-26 22:44:48','2024-09-26 22:44:48'),
+(20,'1','106','[Lecture] SJRS Descriptive Statistics Lecture','https://youtu.be/hrl0QjfBDsE',1,'2024-09-26 22:45:09','2024-09-26 22:45:09'),
+(21,'1','104','[Lecture] Introduction','https://youtu.be/fvegddvyvKA',1,'2024-09-26 22:45:31','2024-09-26 22:45:31'),
+(22,'1','101','[Lecture] More Derivations and Adders','https://youtu.be/s1MnE8ilXtc',1,'2024-09-26 22:46:06','2024-09-26 22:46:06'),
+(23,'1','102','[Lecture] Object Oriented Programming','https://youtu.be/0mmZWkpTCwY',1,'2024-09-26 22:46:23','2024-09-26 22:46:23'),
+(24,'1','103','[Lecture] Introduction to FOSS','https://youtu.be/h6tQduA6Oi0',1,'2024-09-26 22:47:12','2024-09-26 22:47:12'),
+(25,'1','102','[Lecture] Inbuilt functions','https://youtu.be/wGDfQsc8j2c',1,'2024-09-26 22:47:41','2024-09-26 22:47:41'),
+(26,'1','104','[Lecture] Database Systems','https://youtu.be/HFODb2AtNaQ',1,'2024-09-26 22:47:57','2024-09-26 22:47:57'),
+(27,'1','105','[Lecture] 2','https://www.youtube.com/watch?v=pLQhYZ5-RJw',1,'2024-09-26 22:48:30','2024-09-26 22:48:30'),
+(28,'1','103','[Lecture] 2','https://www.youtube.com/watch?v=tp86M2OvngE',1,'2024-09-26 22:48:46','2024-09-26 22:48:46'),
+(29,'1','104','[Lecture] Database Systems','https://youtu.be/tHne7Ym98Qw',1,'2024-09-26 22:49:11','2024-09-26 22:49:11'),
+(30,'1','105','[Lecture] 3','https://youtu.be/nY1LmMu9sbI',1,'2024-09-26 22:49:35','2024-09-26 22:49:35'),
+(31,'1','105','[Lecture] 4','https://youtu.be/6Dd7Yfj70ts?si=4hFSR4CKl-6yX69y',1,'2024-09-26 22:49:45','2024-09-26 22:49:45'),
+(32,'1','105','[Lecture] 5','https://www.youtube.com/watch?v=CY6m04Y4-YM\'',1,'2024-09-26 22:50:04','2024-09-26 22:50:04'),
+(33,'1','105','Youtube Playlist ','https://youtube.com/playlist?list=PLU6SqdYcYsfJ27O0dvuMwafS3X8CecqUg&si=hXn2NJhGxW-YDAJy',1,'2024-09-26 22:56:05','2024-09-26 22:56:05'),
+(34,'1','102','Python Tutorial Video (one shot)\', \'Refer to only topics that are relevant for the first semester syllabus','https://youtu.be/XKHEtdqhLK8',1,'2024-09-26 22:56:40','2024-09-26 22:56:40'),
+(35,'1','102','Complete Python Practicals Part 1','https://www.youtube.com/watch?v=ewGWz_FvjDY',1,'2024-09-26 22:57:17','2024-09-26 22:57:17'),
+(36,'1','102','Complete Python Practicals Part 2','https://youtu.be/6AHk0fH9JBI',1,'2024-09-26 22:57:30','2024-09-26 22:57:30'),
+(37,'2','201','C Programming Full Course (4 hours)','https://www.youtube.com/watch?v=87SH2Cn0s9A',1,'2024-09-26 22:58:11','2024-09-26 22:58:11'),
+(39,'3','306','Techmax','https://drive.google.com/drive/folders/12JpZBXq5LBwPPUdXkXKseJgKwhQlu33Z?usp=sharing',0,'2024-09-28 07:08:16','2024-09-28 07:08:16'),
+(40,'3','305','TechMax','https://drive.google.com/file/d/1lLzgNNTwYH9sTrfyLzO3AxYKjsRi12vP/view?usp=sharing',0,'2024-09-28 07:10:27','2024-09-28 07:10:27'),
+(41,'3','302','TechMax','https://drive.google.com/file/d/1PSEEd2WO2wzIBrI7V1hUyeS5_jn-GTtu/view?usp=sharing',0,'2024-09-28 07:11:07','2024-09-28 07:11:07'),
+(42,'3','304','TechMax','https://drive.google.com/file/d/1UC1_qa-fWdyy77vK9G_QHAhmfxn7X6iM/view?usp=sharing',0,'2024-09-28 07:11:32','2024-09-28 07:11:32'),
+(43,'3','301','TechMax','https://drive.google.com/file/d/13Pb0YNlAyKTsfrQmPNIr9Qgp_Xx9ZOtS/view?usp=sharing',0,'2024-09-28 07:11:49','2024-09-28 07:11:49'),
+(44,'3','307','TechMax','https://drive.google.com/file/d/1aVLgJ2d8HPk8-gvHeZyiQrAvrFDH2CTt/view?usp=sharing',0,'2024-09-28 07:12:01','2024-09-28 07:12:01'),
+(46,'3','301','Complete ToC','https://youtube.com/playlist?list=PLxCzCOWd7aiFM9Lj5G9G_76adtyb4ef7i&si=rVH2Fladps7mLED_',1,'2024-10-13 05:16:27','2024-10-13 05:16:27'),
+(47,'2','205','Integration for Beginners, one shot','https://www.youtube.com/watch?v=C3DS0tqK2TY&t=154s',1,'2024-11-08 10:25:40','2024-11-08 10:25:40'),
+(48,'2','205','PARTIAL DIFFERENTIATION Full Playlist','https://www.youtube.com/watch?v=_T7rcF1mrIw&list=PLT3bOBUU3L9iRoyhs8V1Io-xEsjfq4zI0',1,'2024-11-09 08:46:27','2024-11-09 08:46:27'),
+(49,'3','301','Complete TOC explainations by Neso Academy','https://nesoacademy.org/cs/04-theory-of-computation',0,'2024-12-03 10:51:51','2024-12-03 10:51:51'),
+(50,'3','301','Theory Of Computation By GateSmasher','https://youtube.com/playlist?list=PLxCzCOWd7aiFM9Lj5G9G_76adtyb4ef7i&si=C_L9pjyzZ_JicQSM',1,'2024-12-06 19:32:29','2024-12-06 19:32:29'),
+(51,'3','399','SYCS 2024-2025 Orientation','https://www.youtube.com/watch?v=I-UXYHtwXnA',1,'2024-12-13 06:01:25','2024-12-13 06:01:25'),
+(52,'3','302','Core Java Session 1 | 16 12 2024','https://youtu.be/Ti2v1FFQJIk',1,'2025-01-06 07:45:08','2025-01-06 07:45:08'),
+(53,'3','305','CGT Session 1 | 29 12 2024','https://youtu.be/2tVp0BuCAVM',1,'2025-01-06 07:45:34','2025-01-06 07:45:34'),
+(54,'3','302','Core Java Session 2 | 23 12 2024','https://youtu.be/ZINUpSDLWMk',1,'2025-01-06 07:46:12','2025-01-06 07:46:12'),
+(55,'3','302','Core Java Session 4 | 04 1 2025','https://youtu.be/NAVfe-Z2Kk0',1,'2025-01-06 07:46:35','2025-01-06 07:46:35'),
+(56,'3','306','IOT Session 2 | 16 12 2024','https://youtu.be/7IpWnhO2tlI',1,'2025-01-06 07:46:57','2025-01-06 07:46:57'),
+(57,'3','304','DBMS 03 01 2025','https://youtu.be/iCVrvqpUs9o',1,'2025-01-06 07:47:16','2025-01-06 07:47:16'),
+(58,'3','304','DBMS 04 01 2025','https://youtu.be/ZiZrM_ZX-lA',1,'2025-01-06 07:47:29','2025-01-06 07:47:29'),
+(59,'3','304','DBMS | 04 01 2025 Evening','https://youtu.be/dzxgE8oJ1eI',1,'2025-01-06 07:47:44','2025-01-06 07:47:44'),
+(60,'3','306','IOT Session 6 | 31 12 2024','https://youtu.be/xsFjXLubz7c',1,'2025-01-06 07:48:01','2025-01-06 07:48:01'),
+(61,'3','306','IOT Session 4 | 26 12 2024','https://youtu.be/NHTiC0DhTjM',1,'2025-01-06 07:48:17','2025-01-06 07:48:17'),
+(62,'3','307','WT Session 31 12 2024','https://youtu.be/BwV2TZdLlH4',1,'2025-01-06 07:48:39','2025-01-06 07:48:39'),
+(63,'3','303','Operating System 05 01 2025','https://youtu.be/yGKTicY1gks',1,'2025-01-06 07:48:55','2025-01-06 07:48:55'),
+(64,'3','306','IOT Session 7 01 01 2025','https://youtu.be/M4GtqFkdZww',1,'2025-01-06 07:49:16','2025-01-06 07:49:16'),
+(65,'3','301','TOC Session 1 | 22 12 2024','https://youtu.be/t8Jk5GLuCjQ',1,'2025-01-06 07:49:31','2025-01-06 07:49:31'),
+(66,'3','306','IOT Session 5 29 12 2024','https://youtu.be/Sxh6gbdwEzk',1,'2025-01-06 07:49:49','2025-01-06 07:49:49'),
+(67,'3','306','IOT Session 3 17 12 2024','https://youtu.be/1ypDdbZUMTs',1,'2025-01-06 07:50:02','2025-01-06 07:50:02'),
+(68,'3','305','CGT Session 3 05 01 2025','https://youtu.be/dUudxqJNbAM',1,'2025-01-06 07:50:27','2025-01-06 07:50:27'),
+(69,'3','304','DBMS | 06 01 2025 | Bhavans Andheri','https://youtu.be/DwhtZFSpkJw',1,'2025-01-06 15:46:56','2025-01-06 15:46:56'),
+(70,'3','302','Core Java Lecture | 3/1/2025 | Bhavans Andheri','https://youtu.be/3f7LteDvUkA',1,'2025-01-07 07:48:19','2025-01-07 07:48:19'),
+(71,'3','302','Core Java Lecture | 6/1/2025 | Bhavans Andheri','https://youtu.be/ctfd5-pO4HM',1,'2025-01-07 07:48:36','2025-01-07 07:48:36'),
+(72,'3','302','Core Java Lecture | 7/1/2025 | Bhavans Andheri','https://youtu.be/XUQbWZWTxvc',1,'2025-01-07 07:48:56','2025-01-07 07:48:56'),
+(73,'3','305','CGT Session 4 | 07 01 2025 | Bhavans Andheri','https://youtu.be/nrIO0q7tkdQ',1,'2025-01-08 06:46:57','2025-01-08 06:46:57'),
+(74,'3','302','Core Java | 08/01/2025 | Bhavans Andheri','https://youtu.be/tO51kr12Au8',1,'2025-01-09 17:10:36','2025-01-09 17:10:36'),
+(75,'3','303','Operating System  |  09 01 2025 | Bhavans Andheri','https://youtu.be/natci6M6a-U',1,'2025-01-09 17:13:03','2025-01-09 17:13:03'),
+(76,'3','302','Core Java Session |  09 01 2025 | Bhavans Andheri','https://youtu.be/zAGX5Aa2Y8E',1,'2025-01-09 17:13:47','2025-01-09 17:13:47');
+/*!40000 ALTER TABLE `links` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+set autocommit=0;
+INSERT INTO `migrations` VALUES
+(1,'0001_01_01_000000_create_users_table',1),
+(2,'0001_01_01_000001_create_cache_table',1),
+(3,'0001_01_01_000002_create_jobs_table',1),
+(4,'2024_09_17_183307_add_google_id_to_users_table',1),
+(5,'2024_09_19_061705_create_personal_access_tokens_table',1),
+(6,'2024_09_19_072942_add_more_fields_to_user_table',1),
+(7,'2024_09_19_081059_create_subjects_table',1),
+(8,'2024_09_20_175416_create_configs_table',1),
+(9,'2024_09_21_120749_create_updates_table',1),
+(10,'2024_09_25_083113_create_resources_table',1),
+(11,'2024_09_25_120004_create_links_table',1),
+(12,'2024_09_26_111205_change_resources_table',1),
+(13,'2024_09_26_180750_create_redirects_table',1),
+(14,'2024_09_30_165913_modify_link_length_in_redirects_table',2),
+(15,'2025_05_15_152942_add_calendar',3);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `password_reset_tokens`
+--
+
+DROP TABLE IF EXISTS `password_reset_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_reset_tokens`
+--
+
+LOCK TABLES `password_reset_tokens` WRITE;
+/*!40000 ALTER TABLE `password_reset_tokens` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `password_reset_tokens` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+DROP TABLE IF EXISTS `personal_access_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `personal_access_tokens`
+--
+
+LOCK TABLES `personal_access_tokens` WRITE;
+/*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `redirects`
+--
+
+DROP TABLE IF EXISTS `redirects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `redirects` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `url` varchar(2048) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `redirects`
+--
+
+LOCK TABLES `redirects` WRITE;
+/*!40000 ALTER TABLE `redirects` DISABLE KEYS */;
+set autocommit=0;
+INSERT INTO `redirects` VALUES
+(1,'Our website','https://idolcs.com',NULL,NULL),
+(2,'Yash\'s Instagram','https://instagram.com/classicaf',NULL,NULL),
+(3,'Chapter 3 Of Foss','https://t.me/idol_cs/68?comment=249',NULL,NULL),
+(4,'Decimal to Binary Calculator with Steps','https://www.rapidtables.com/convert/number/decimal-to-binary.html',NULL,NULL),
+(5,'Decimal to Octal','https://www.rapidtables.com/convert/number/decimal-to-octal.html',NULL,NULL),
+(6,'Decimal to Hexadecimal Converter','https://www.rapidtables.com/convert/number/decimal-to-hex.html',NULL,NULL),
+(7,'Introduction to Number Systems ','https://www.youtube.com/watch?v=crSGS1uBSNQ',NULL,NULL),
+(8,'Find 1\'s Complement & 2\'s Complement in 5 seconds | Best Trick ','https://www.youtube.com/watch?v=pXIfEklKsOQ',NULL,NULL),
+(9,'SQL Queries and Subqueries | Group By clause | Database Management System','https://www.youtube.com/watch?v=apNmMWgFFRg',NULL,NULL),
+(10,'group by clause in sql | Oracle Database','https://www.youtube.com/watch?v=6gASpEFZ5Is',NULL,NULL),
+(11,'11.	Aggregate Functions - SUM, AVG(n), COUNT, MIN, MAX Functions | DBMS','https://www.youtube.com/watch?v=Yr4pHPZCshA',NULL,NULL),
+(12,'12.	Aggregate Functions in SQL - COUNT, SUM, AVG, MAX, MIN | SQL Tutorial in Hindi','https://www.youtube.com/watch?v=9NfthspfXEo',NULL,NULL),
+(13,'Binary Explained in 100 Seconds','https://www.youtube.com/watch?v=zDNaUi2cjv4',NULL,NULL),
+(14,'SQL','https://www.w3schools.com/sql/',NULL,NULL),
+(15,' Introduction to Joins and its types | Need of Joins with example | DBMS','https://www.youtube.com/watch?v=zYH-e6tUYbw',NULL,NULL),
+(16,'Equi and Non-Equi SQL Joins','https://www.geeksforgeeks.org/sql-equi-join-and-non-equi-join/',NULL,NULL),
+(17,'17.	SQL Joins: Difference Between Inner/Left/Right/Outer Joins','https://www.youtube.com/watch?v=zGSv0VaOtR0',NULL,NULL),
+(18,'Chapter 4: Case Study, FOSS','https://drive.google.com/file/d/1iNDnUOPYnys6RYEKXKwLcYBZ7m2ST-4h/view?usp=drive_link',NULL,NULL),
+(19,'Tech max for FOSS chap 4','https://ttttt.me/idolcs_backend/273',NULL,NULL),
+(20,'History of Linux','https://youtu.be/ShcR4Zfc6Dw',NULL,NULL),
+(21,'History Of Android','https://youtu.be/OWu2eF_EfBQ',NULL,NULL),
+(22,'Android Architecture','https://youtu.be/ada99UCvELI',NULL,NULL),
+(23,'Open Source License Explained','https://youtu.be/iHB6pEYJCJk',NULL,NULL),
+(24,'FOSS chap 4 article','https://opensource.com/resources/what-open-hardware',NULL,NULL),
+(25,'Open Source Design','https://youtu.be/wcJFS9HOUOk',NULL,NULL),
+(26,'SQL Views In 4 Minutes','https://www.youtube.com/watch?v=vLLkNI-vkV8',NULL,NULL),
+(27,'SQL Views Tutorial | VIEWS in SQL Complete Tutorial','https://www.youtube.com/watch?v=cLSxasHg9WY&t=25s',NULL,NULL),
+(28,'Temp','https://files.yash.codes/index.php/s/WGQaGQm8p6Jd8SH',NULL,NULL),
+(29,'Schema','https://www.youtube.com/watch?v=7HbBVsQ6Lsk',NULL,NULL),
+(30,'tech max Foss Notes PDF','https://drive.google.com/file/d/1XdoUzFuAwEc9JBGMQY_3_dAg5IfIjxLI/view',NULL,NULL),
+(31,'Programing With Python 1 | Lecture 10 | Sunil Vijay Sir','https://youtu.be/HFODb2AtNaQ?si=mDOp-ajnb869jQOV',NULL,NULL),
+(32,'Data Presentation Tech Max','https://drive.google.com/file/d/1dRdesVSbuZBKcqLG9AD9rGmDrtQ4YceQ/view',NULL,NULL),
+(33,'Python Assignment ','https://drive.google.com/file/d/12iHRgtrpjq9_TZ2uqtWC-7kNTKVotWx1/view?usp=drivesdk',NULL,NULL),
+(34,'IGNORE','https://maps.app.goo.gl/aW77Z5NmZtPaU98D9',NULL,NULL),
+(35,'','https://www.youtube.com/watch?v=YmKmS9bpMqM',NULL,NULL),
+(36,'Karnaugh Map (K-map) : 2-Variable and 3-Variable K- map Explained','https://www.youtube.com/watch?v=lw1STgKUpW0',NULL,NULL),
+(37,'Kmaps techknowledge','tg://resolve?domain=idolcs_backend&post=343',NULL,NULL),
+(38,'Combined mean','https://www.youtube.com/watch?v=9atgBjfExGk',NULL,NULL),
+(39,'quartile deviation continous','https://www.youtube.com/watch?v=8UWmnpmf-E4',NULL,NULL),
+(40,'Introduction to Multiplexers | MUX Basic','https://www.youtube.com/watch?v=FKvnmxte98A',NULL,NULL),
+(41,'41.	Introduction to Demultiplexer | 1:2 DEMUX','https://www.youtube.com/watch?v=t3Ed13z9uz8',NULL,NULL),
+(42,'Flip Flops (Neso Academy)','https://www.youtube.com/playlist?list=PLuYnCh-Sh1XdvuSGjQRi2jgUH9_CiVR8J',NULL,NULL),
+(43,'Temp redirect','https://files.yash.lol/index.php/s/dSmQyB4bFedJS36',NULL,NULL),
+(44,'Moments, Skewness and Kurtoisis','https://www.youtube.com/playlist?list=PLEHGYFbPuuMF_DhK0YZ4AXAvwrtULsQac',NULL,NULL),
+(45,'Probability','https://www.youtube.com/watch?v=ADaxql883-M',NULL,NULL),
+(46,'','https://resultdecoder.idolcs.com','2024-09-27 10:26:03','2024-09-27 10:26:03'),
+(47,'Official website','https://mu.ac.in/distance-open-learning','2024-09-27 10:26:51','2024-09-27 10:26:51'),
+(48,'Sem 2 Journals Bhavans','https://drive.google.com/drive/folders/1dBrES-hA_B0W2yYDLOrOeMVbHGey6vQu','2024-12-20 17:11:25','2024-12-20 17:11:25'),
+(49,'Web Programming Notes by Yash','https://app.affine.pro/workspace/19cf9eac-08f0-40ce-a37e-c248a7c79557/Vd7y9RkWonMDYDZk4dZVT?mode=page','2025-01-06 14:59:48','2025-01-06 14:59:48'),
+(50,'','https://tinyurl.com/4rxvnr9w','2025-06-06 07:13:08','2025-06-06 07:13:08'),
+(51,'','https://limewire.com/d/sxlFn#8210b1fGM8','2025-06-06 07:13:30','2025-06-06 07:13:30'),
+(52,'https://drive.google.com/drive/folders/1fc22ldwZe3M71mU_JnPKMCTt44ZLA8Rs','https://drive.google.com/drive/folders/1fc22ldwZe3M71mU_JnPKMCTt44ZLA8Rs','2025-12-25 10:11:52','2025-12-25 10:11:52'),
+(53,'kamikaze','https://kamikaze.20022005.xyz/share/OvQTkwn5','2026-01-26 13:50:30','2026-01-26 13:50:30'),
+(54,'','https://us.onetimesecret.com/secret/i54najcjen5wu8080xcop9hf6h5kpl3u1dbrftsp0tzrfvbiy3i14p3vkgp2sr','2026-04-13 21:49:32','2026-04-13 21:49:32'),
+(55,'','https://wormhole.app/X63Reo#uYJt31DYy4pp4X51LnKLrg','2026-04-25 19:24:44','2026-04-25 19:24:44'),
+(56,'','https://kamikaze.20022005.xyz/share/l_yg2LaV','2026-05-13 20:16:02','2026-05-13 20:16:02');
+/*!40000 ALTER TABLE `redirects` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `resources`
+--
+
+DROP TABLE IF EXISTS `resources`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `resources` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `semester` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `file` varchar(255) NOT NULL,
+  `author_email` varchar(255) NOT NULL,
+  `author_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=320 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `resources`
+--
+
+LOCK TABLES `resources` WRITE;
+/*!40000 ALTER TABLE `resources` DISABLE KEYS */;
+set autocommit=0;
+INSERT INTO `resources` VALUES
+(1,'1','102','Programming with Python 1',NULL,'1727382999-programming in python 1.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 20:36:39','2024-09-26 20:36:39'),
+(2,'1','102','Programming with Python 2',NULL,'1727383244-programming with python 2.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 20:40:44','2024-09-26 20:40:44'),
+(3,'1','102','Programming with Python 3',NULL,'1727383299-programming with python 3.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 20:41:39','2024-09-26 20:41:39'),
+(4,'1','102','Functions',NULL,'1727383413-functions.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 20:43:33','2024-09-26 20:43:33'),
+(5,'1','102','Anonymous Functions',NULL,'1727383450-anonymous functions.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 20:44:10','2024-09-26 20:44:10'),
+(6,'1','102','List Comprehension',NULL,'1727383997-list-comprehension.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 20:53:17','2024-09-26 20:53:17'),
+(7,'1','102','Introduction to Object Oriented Programming',NULL,'1727384126-intro to OOPS.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 20:55:26','2024-09-26 20:55:26'),
+(8,'1','102','Previous Year Questions 1',NULL,'1727384379-102 pyq part 1.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 20:59:39','2024-09-26 20:59:39'),
+(9,'1','102','Previous Year Questions 2',NULL,'1727384404-102 pyq part 2.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:00:05','2024-09-26 21:00:05'),
+(10,'1','104','Introduction to DBMS',NULL,'1727386707-Introduction to dbms.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:38:27','2024-09-26 21:38:27'),
+(11,'1','104','Data Models',NULL,'1727386796-pdf24_images_merged.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:39:56','2024-09-26 21:39:56'),
+(12,'1','104','Entity Relationship Model',NULL,'1727386876-entity relationship model.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:41:16','2024-09-26 21:41:16'),
+(13,'1','104','Relational Data Model',NULL,'1727387017-relational data model.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:43:37','2024-09-26 21:43:37'),
+(14,'1','104','ER to Table',NULL,'1727387101-er to table.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:45:01','2024-09-26 21:45:01'),
+(15,'1','104','Schema Refinement and Normal Forms',NULL,'1727387510-schema refinement and normal forms.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:51:50','2024-09-26 21:51:50'),
+(16,'1','104','Relational Algebra',NULL,'1727387598-relational algebra.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:53:18','2024-09-26 21:53:18'),
+(17,'1','103','Introduction to FOSS',NULL,'1727387679-Introduction to Free and Open Source Software.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:54:39','2024-09-26 21:54:39'),
+(18,'1','103','Methodologies to FOSS',NULL,'1727387763-Chapter 2 Free And Open Source Software.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:56:03','2024-09-26 21:56:03'),
+(19,'1','103','Social Impact',NULL,'1727387785-Chapter 3.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:56:25','2024-09-26 21:56:25'),
+(20,'1','101','Computer Abstractions and  Technology',NULL,'1727387831-101-1.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:57:11','2024-09-26 21:57:11'),
+(21,'1','104','DDL Statements',NULL,'1727387954-ddl statements.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:59:14','2024-09-26 21:59:14'),
+(22,'1','104','DML Statements',NULL,'1727387985-104-9.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 21:59:45','2024-09-26 21:59:45'),
+(24,'1','103','Case Study On Linux Technology And Open Source Software',NULL,'1727388120-Case Study Chapter 4. FOSS.docx.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:02:00','2024-09-26 22:02:00'),
+(26,'1','104','Functions',NULL,'1727388215-104-10-1.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:03:35','2024-09-26 22:03:35'),
+(27,'1','104','Joins',NULL,'1727388226-104-10-2.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:03:46','2024-09-26 22:03:46'),
+(28,'1','104','Subqueries',NULL,'1727388241-104-10-3.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:04:01','2024-09-26 22:04:01'),
+(29,'1','104','Views',NULL,'1727388263-104-10-4.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:04:23','2024-09-26 22:04:23'),
+(30,'1','105','Recurrence Relations - Functions',NULL,'1727388306-DM-Chapter1.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:05:06','2024-09-26 22:05:06'),
+(31,'1','105','Recurrence Relations - Relations',NULL,'1727388326-DM-Chapter2 (1).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:05:26','2024-09-26 22:05:26'),
+(32,'1','103','Understanding Open Source Ecosystem',NULL,'1727388380-Chapter - Understanding Open-Source Ecosystem.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:06:20','2024-09-26 22:06:20'),
+(33,'1','106','Data Representation',NULL,'1727388589-stats chap 1.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:09:49','2024-09-26 22:09:49'),
+(34,'1','106','Measures of Central Tendency',NULL,'1727388721-stats chap 2.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:12:01','2024-09-26 22:12:01'),
+(35,'1','105','Recurrence Relations',NULL,'1727388808-DM-Chapter3.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:13:28','2024-09-26 22:13:28'),
+(36,'1','106','Measures of Dispersion',NULL,'1727388888-stats chap 3.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:14:48','2024-09-26 22:14:48'),
+(37,'1','101','Logic Circuits And Functions',NULL,'1727388919-101-2.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:15:19','2024-09-26 22:15:19'),
+(38,'1','106','Moments, Skewness and Kurtosis',NULL,'1727389143-106-4.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:19:03','2024-09-26 22:19:03'),
+(39,'1','106','Probability',NULL,'1727389261-106-6.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:21:01','2024-09-26 22:21:01'),
+(40,'2','202','Python File Input-Output',NULL,'1727389729-202-1 Textbook Annotations.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:28:49','2024-09-26 22:28:49'),
+(41,'2','202','Exception Handling',NULL,'1727389767-202-2 Textbook Annotations.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:29:27','2024-09-26 22:29:27'),
+(42,'2','202','Regular Expressions',NULL,'1727389840-202-3 Textbook Annotations.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:30:40','2024-09-26 22:30:40'),
+(43,'2','202','GUI Programming in Python - 1',NULL,'1727389903-GUI with Tkinter - Programming with Pyton 2.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:31:43','2024-09-26 22:31:43'),
+(44,'2','201','Structure of C program',NULL,'1727389964-201-1 Textbook Annotations (2).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:32:44','2024-09-26 22:32:44'),
+(45,'2','201','Datatypes in C',NULL,'1727390005-201-2 Datatypes in C.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:33:25','2024-09-26 22:33:25'),
+(46,'2','201','Types of Operators',NULL,'1727390042-201-4 Textbook Annotations.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:34:02','2024-09-26 22:34:02'),
+(47,'2','201','Control Statements for Decision Making',NULL,'1727390078-201-5 Textbook Annotations.pdf','yashskolambekar2015@gmail.com','Yash','2024-09-26 22:34:38','2024-09-26 22:34:38'),
+(49,'3','399','Syllabus',NULL,'1727502230-2.-S.Y.B.Sc.Computer-Science-CBCS-Syllabus-Semester-III-and-IV (1).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-28 05:43:50','2024-09-28 05:43:50'),
+(51,'3','302','PYQ',NULL,'1727506229-Core Java USCS302.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:50:29','2024-09-28 06:50:29'),
+(52,'3','303','PYQ',NULL,'1727506244-Operating System USCS303.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:50:44','2024-09-28 06:50:44'),
+(53,'3','304','PYQ',NULL,'1727506253-Database Management System USCS304.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:50:53','2024-09-28 06:50:53'),
+(54,'3','305','PYQ',NULL,'1727506270-Combinatorics and Graph Theory USCS305.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:51:10','2024-09-28 06:51:10'),
+(55,'3','306','PYQ',NULL,'1727506281-Physical Computing and IoT Programming USCS306.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:51:21','2024-09-28 06:51:21'),
+(56,'3','301','PYQ',NULL,'1727506308-Theory of Computation USCS301.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:51:48','2024-09-28 06:51:48'),
+(57,'3','301','Text Book',NULL,'1727506422-Theory-of-Computation-1.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:53:42','2024-09-28 06:53:42'),
+(58,'3','302','Text Book',NULL,'1727506429-Core-JAVA.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:53:49','2024-09-28 06:53:49'),
+(59,'3','303','Text Book',NULL,'1727506446-S.Y.B.Sc.Computer-Science-semester-III-Operating-System.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:54:06','2024-09-28 06:54:06'),
+(60,'3','304','Text Book',NULL,'1727506455-Database-Management-Systems.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:54:15','2024-09-28 06:54:15'),
+(61,'3','305','Text Book',NULL,'1727506476-S.Y.B.Sc.Computer-Science-semester-III-Combinatorics-and-Graph-Theory.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:54:36','2024-09-28 06:54:36'),
+(62,'3','306','Text Book',NULL,'1727506489-Physical-Computing-and-IoT-Programming.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:54:49','2024-09-28 06:54:49'),
+(63,'3','307','Text Book',NULL,'1727506505-Skill-Enhancement-Web-Programming.pdf','ayubmohideen@gmail.com','Ayyub','2024-09-28 06:55:05','2024-09-28 06:55:05'),
+(64,'2','202','PYQ (2023-24)',NULL,'1727626374-PYTHON 2 (2023-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:12:54','2024-09-29 16:12:54'),
+(65,'2','201','PYQ (2023-24)',NULL,'1727626525-C PROGRAMMING (2023-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:15:25','2024-09-29 16:15:25'),
+(66,'2','203','PYQ (2023-24)',NULL,'1727626799-Linux (2023-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:19:59','2024-09-29 16:19:59'),
+(67,'2','204','PYQ (2023-24)',NULL,'1727626901-DS (2023-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:21:41','2024-09-29 16:21:41'),
+(69,'2','205','PYQ (2023-24)',NULL,'1727627191-Calculus (2023-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:26:31','2024-09-29 16:26:31'),
+(70,'2','206','PYQ (2023-24)',NULL,'1727627312-Stats (2023-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:28:32','2024-09-29 16:28:32'),
+(71,'2','207','PYQ (2023-24)',NULL,'1727627423-Green Technologies (2023-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:30:23','2024-09-29 16:30:23'),
+(72,'1','101','PYQ (2023-24)',NULL,'1727627542-COD (23-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:32:22','2024-09-29 16:32:22'),
+(73,'1','102','PYQ (2023-24)',NULL,'1727627623-python 1 (23-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:33:43','2024-09-29 16:33:43'),
+(74,'1','103','PYQ (2023-24)',NULL,'1727627735-foss (23-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:35:35','2024-09-29 16:35:35'),
+(75,'1','104','PYQ (2023-24)',NULL,'1727627824-DBMS (23-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:37:04','2024-09-29 16:37:04'),
+(76,'1','107','PYQ (2023-24)',NULL,'1727627898-Soft Skills (23-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:38:18','2024-09-29 16:38:18'),
+(77,'1','106','PYQ (2023-24)',NULL,'1727627987-stats (23-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:39:47','2024-09-29 16:39:47'),
+(78,'1','105','PYQ (2023-24)',NULL,'1727628082-DM (23-24).pdf','yashskolambekar2015@gmail.com','Yash','2024-09-29 16:41:22','2024-09-29 16:41:22'),
+(81,'3','302','PYQ Ans',NULL,'1727860549-CoreJavaPyq.htm','ayubmohideen@gmail.com','Ayyub','2024-10-02 09:15:49','2024-10-02 09:15:49'),
+(83,'2','299','Repeater\'s Examination (Nov 2024)',NULL,'1728122080-Date-of-Commencement-FY-SYBA_BCom_BAF_BSc-in-IT-CS-sem-II-IVJuly-Session.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-05 09:54:40','2024-10-05 09:54:40'),
+(84,'3','399','Exam Dates (Dec 2024)',NULL,'1728122316-Date-of-Commencement-FY-SYBA_BCom_BAF_BSc-in-IT-CS-sem-I-IIIJuly-Session.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-05 09:58:36','2024-10-05 09:58:36'),
+(86,'1','104','PYQ Ans',NULL,'1728358217-Dbms Pyq.htm','ayubmohideen@gmail.com','Ayyub','2024-10-08 03:30:17','2024-10-08 03:30:17'),
+(87,'3','304','Pyq Ans',NULL,'1728358300-Dbms Pyq.htm','ayubmohideen@gmail.com','Ayyub','2024-10-08 03:31:40','2024-10-08 03:31:40'),
+(88,'3','306','Pyq Ans',NULL,'1728369433-IoT PyqAns.html','ayubmohideen@gmail.com','Ayyub','2024-10-08 06:37:13','2024-10-08 06:37:13'),
+(89,'3','303','PyQ Ans',NULL,'1728414031-Operating Systems PYQ_Ans.html','ayubmohideen@gmail.com','Ayyub','2024-10-08 19:00:31','2024-10-08 19:00:31'),
+(90,'3','307','Question Paper (2023)',NULL,'1728443669-WEB TECHNOLOGIES.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-09 03:14:29','2024-10-09 03:14:29'),
+(96,'3','307','Question Paper (2022)',NULL,'1728443872-S.Y.C.S SEM-III WEB.TCHNOLOGY (12 OCT.22).pdf','yashskolambekar2015@gmail.com','Yash','2024-10-09 03:17:52','2024-10-09 03:17:52'),
+(97,'3','307','Question Paper (2023)','May 2023','1728462670-SYBSc(CS)(Sem-III)Skill Enhancement.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-09 08:31:10','2024-10-09 08:31:10'),
+(98,'2','299','Results 2023-24',NULL,'1728563237-LEDGER-OF-FYBSC-CS-SEM-II-FIRST-HALF-2024-JULY-2024-EXAM.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-10 12:27:17','2024-10-10 12:27:17'),
+(99,'1','199','ATKT Results (2023-24)',NULL,'1729257088-LEDGER-OF-FYBSC-CS-SEM-I-FIRST-HALF-2024-AUGUST-2024-EXAM.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-18 13:11:28','2024-10-18 13:11:28'),
+(100,'2','202','Full Subject Notes','by Vansh Patel','1729257236-Advance Python.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-18 13:13:56','2024-10-18 13:13:56'),
+(101,'2','204','Full Subject Notes','by Vansh Patel','1729257304-Data Structure.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-18 13:15:04','2024-10-18 13:15:04'),
+(102,'2','201','Full Subject Notes','by Vansh Patel','1729257375-C Programming.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-18 13:16:15','2024-10-18 13:16:15'),
+(103,'2','206','Full Subject Notes','by Vansh Patel','1729257445-Statistical Methods & Testing of Hypothesis.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-18 13:17:25','2024-10-18 13:17:25'),
+(105,'2','203','Full Subject Notes','by Vansh Patel','1729257475-Linux.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-18 13:17:55','2024-10-18 13:17:55'),
+(106,'2','299','Repeater Exam Timetable Nov 2024',NULL,'1729536590-FYBSC-Computer-Science-Sem-II-Time-Table-November-2024.pdf','yashskolambekar2015@gmail.com','Yash','2024-10-21 18:49:50','2024-10-21 18:49:50'),
+(107,'3','307','Ans Pyq',NULL,'1730268673-Web Programming Pyq.html','ayubmohideen@gmail.com','Ayyub','2024-10-30 06:11:13','2024-10-30 06:11:13'),
+(108,'2','201','PYQ with solutions','by Shadow','1730729457-C++pyq.pdf','yashskolambekar2015@gmail.com','Yash','2024-11-04 14:10:57','2024-11-04 14:10:57'),
+(109,'1','199','Notice for Sem 1 Repeater exams form (2024-25)',NULL,'1730824095-First-Year-Second-Year-B.Sc.I.T-Comp.Sci.pdf','yashskolambekar2015@gmail.com','Yash','2024-11-05 16:28:15','2024-11-05 16:28:15'),
+(110,'2','202','AKTK Question Paper Nov 2024',NULL,'1730991669-WhatsApp Image 2024-11-07 at 10.50.37.pdf','yashskolambekar2015@gmail.com','Yash','2024-11-07 15:01:09','2024-11-07 15:01:09'),
+(111,'3','399','Sem 1 and 3 : Updated Exam Dates 2024-25',NULL,'1731908341-Commencement-Date-FY-SYBA-BCom-BAF-BSc-in-CS-IT-sem-I-III-December-2024.pdf','yashskolambekar2015@gmail.com','Yash','2024-11-18 05:39:01','2024-11-18 05:39:01'),
+(112,'1','101','Question Bank',NULL,'1732801690-5_6208610453136872415.pdf','yashskolambekar2015@gmail.com','Yash','2024-11-28 13:48:10','2024-11-28 13:48:10'),
+(113,'3','303','TechMax',NULL,'1733513475-Operating System TechMaX.pdf','ayubmohideen@gmail.com','Ayyub','2024-12-06 19:31:15','2024-12-06 19:31:15'),
+(114,'3','399','January 2025 Timetable',NULL,'1733894361-SYBSc-in-CS-sem-IIICBCS-January-2025-fresh-repeaters-students.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-11 05:19:21','2024-12-11 05:19:21'),
+(115,'1','199','January 2025 Timetable',NULL,'1733894385-FYBSc-in-CS-sem-ICBCS-January-2025-fresh-repeaters-students.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-11 05:19:45','2024-12-11 05:19:45'),
+(116,'2','299','Internal exams January 2025 Timetable',NULL,'1733894430-Internal-Exam_FYBSc-in-CS-sem-IICBCS-December-2024-repeaters-students.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-11 05:20:30','2024-12-11 05:20:30'),
+(117,'2','299','Revaluation Result (December 2025)',NULL,'1733895876-5_6253795368811631805-1.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-11 05:44:36','2024-12-11 05:44:36'),
+(118,'3','301','PYQ 2019',NULL,'1734068743-SYBSC-CS_SEM3_TOC_APR19.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:45:43','2024-12-13 05:45:43'),
+(119,'3','301','PYQ 2018',NULL,'1734068759-SYBSC-CS_SEM3_TOC_NOV18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:45:59','2024-12-13 05:45:59'),
+(120,'3','301','PYQ 2018 (april)',NULL,'1734068784-SYBSC-CS_SEM3_TOC_APR18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:46:24','2024-12-13 05:46:24'),
+(121,'3','301','PYQ 2017',NULL,'1734068808-SYBSC-CS_SEM3_TOC_NOV17.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:46:48','2024-12-13 05:46:48'),
+(122,'3','302','PYQ 2019 April',NULL,'1734068985-SYBSC-CS_SEM3_CJ_APR19.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:49:45','2024-12-13 05:49:45'),
+(123,'3','302','PYQ 2019 Nov',NULL,'1734068996-SYBSC-CS_SEM3_CJ_NOV18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:49:56','2024-12-13 05:49:56'),
+(124,'3','302','PYQ 2018 April',NULL,'1734069009-SYBSC-CS_SEM3_CJ_APR18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:50:09','2024-12-13 05:50:09'),
+(125,'3','302','PYQ 2017 Nov',NULL,'1734069021-SYBSC-CS_SEM3_CJ_NOV17.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:50:21','2024-12-13 05:50:21'),
+(126,'3','303','PYQ 2019 April',NULL,'1734069084-SYBSC-CS_SEM3_OS_APR19.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:51:24','2024-12-13 05:51:24'),
+(127,'3','303','PYQ 2018 Nov',NULL,'1734069099-SYBSC-CS_SEM3_OS_NOV18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:51:39','2024-12-13 05:51:39'),
+(128,'3','303','PYQ 2018 April',NULL,'1734069111-SYBSC-CS_SEM3_OS_APR18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:51:51','2024-12-13 05:51:51'),
+(129,'3','303','PYQ 2017 Nov',NULL,'1734069124-SYBSC-CS_SEM3_OS_NOV17.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:52:04','2024-12-13 05:52:04'),
+(130,'3','304','PYQ 2019 April',NULL,'1734069201-SYBSC-CS_SEM3_DBMS_APR19.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:53:21','2024-12-13 05:53:21'),
+(131,'3','304','PYQ 2018 April',NULL,'1734069211-SYBSC-CS_SEM3_DBMS_APR18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:53:31','2024-12-13 05:53:31'),
+(132,'3','304','PYQ 2018 Nov',NULL,'1734069224-SYBSC-CS_SEM3_DBMS_NOV18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:53:44','2024-12-13 05:53:44'),
+(133,'3','304','PYQ 2017 Nov',NULL,'1734069237-SYBSC-CS_SEM3_DBMS_NOV17.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:53:57','2024-12-13 05:53:57'),
+(134,'3','305','PYQ 2019 April',NULL,'1734069333-SYBSC-CS_SEM3_CGT_APR19.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:55:33','2024-12-13 05:55:33'),
+(135,'3','305','PYQ 2019 Nov',NULL,'1734069345-SYBSC-CS_SEM3_CGT_NOV18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:55:45','2024-12-13 05:55:45'),
+(136,'3','305','PYQ 2018 April',NULL,'1734069361-SYBSC-CS_SEM3_CGT_APR18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:56:01','2024-12-13 05:56:01'),
+(137,'3','305','PYQ 2017 Nov',NULL,'1734069373-SYBSC-CS_SEM3_CGT_NOV17.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:56:13','2024-12-13 05:56:13'),
+(138,'3','306','PYQ 2019 April',NULL,'1734069431-SYBSC-CS_SEM3_PC&IOT_APR19.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:57:11','2024-12-13 05:57:11'),
+(139,'3','306','PYQ 2018 Nov',NULL,'1734069448-SYBSC-CS_SEM3_PC&IOT_NOV18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:57:28','2024-12-13 05:57:28'),
+(140,'3','306','PYQ 2018 April',NULL,'1734069458-SYBSC-CS_SEM3_PC&IOT_APR18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:57:38','2024-12-13 05:57:38'),
+(141,'3','306','PYQ 2017 Nov',NULL,'1734069470-SYBSC-CS_SEM3_PC&IOT_NOV17.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:57:50','2024-12-13 05:57:50'),
+(142,'3','307','PYQ 2019 April',NULL,'1734069516-SYBSC-CS_SEM3_WP_APR19.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:58:36','2024-12-13 05:58:36'),
+(143,'3','307','PYQ 2018 Nov',NULL,'1734069527-SYBSC-CS_SEM3_WP_NOV18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:58:47','2024-12-13 05:58:47'),
+(144,'3','307','PYQ 2018 April',NULL,'1734069539-SYBSC-CS_SEM3_WP_APR18.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:58:59','2024-12-13 05:58:59'),
+(145,'3','307','PYQ 2017 Nov',NULL,'1734069551-SYBSC-CS_SEM3_WP_NOV17.pdf','yashskolambekar2015@gmail.com','Yash','2024-12-13 05:59:11','2024-12-13 05:59:11'),
+(147,'3','305','Notes (non-IDOL)','Generic notes found from a student of another college, not as per IDOL syllabus','1735914228-GT Notes.pdf','yashskolambekar2015@gmail.com','Yash','2025-01-03 14:23:48','2025-01-03 14:23:48'),
+(148,'3','399','PCP Centre List 2024-25',NULL,'1736144768-DOC-20250106-WA0002..pdf','yashskolambekar2015@gmail.com','Yash','2025-01-06 06:26:08','2025-01-06 06:26:08'),
+(149,'1','101','QP 2025 Jan',NULL,'1736176768-python_qp_2025_jan.pdf','yashskolambekar2015@gmail.com','Yash','2025-01-06 15:19:28','2025-01-06 15:19:28'),
+(150,'1','102','QP 2025 Jan',NULL,'1736176879-python_qp_jan_2025.pdf','yashskolambekar2015@gmail.com','Yash','2025-01-06 15:21:19','2025-01-06 15:21:19'),
+(151,'3','304','Textbook Questions with Answers','Composed  by Hardi Koli','1736224705-DBMS.pdf','yashskolambekar2015@gmail.com','Yash','2025-01-07 04:38:25','2025-01-07 04:38:25'),
+(152,'1','103','PYQ Jan 2024',NULL,'1736486445-foss-jan-2024-paper.pdf','yashskolambekar2015@gmail.com','Yash','2025-01-10 05:20:45','2025-01-10 05:20:45'),
+(153,'4','401','Text Book',NULL,'1737648633-Fundamental-of-Algorithms TextBook.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:10:33','2025-01-23 16:10:33'),
+(154,'4','401','PYQ Nov-2024',NULL,'1737648661-Fundamentals of Algorithms PYQ Nov-2024.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:11:01','2025-01-23 16:11:01'),
+(155,'4','401','TechMax',NULL,'1737648675-Fundamentals Of Algorithms TechMax.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:11:16','2025-01-23 16:11:16'),
+(156,'4','401','Text Book QS',NULL,'1737648706-Fundamentals Of Algorithms TxtBook_QS.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:11:46','2025-01-23 16:11:46'),
+(157,'4','402','Text Book',NULL,'1737649937-ADVANCE-JAVA TextBook.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:32:17','2025-01-23 16:32:17'),
+(158,'4','402','Text Book QS',NULL,'1737649952-Advance Java TextBook_QS.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:32:32','2025-01-23 16:32:32'),
+(159,'4','402','TechMax',NULL,'1737649975-advance_JAVA_TECHMAX.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:32:56','2025-01-23 16:32:56'),
+(160,'4','402','PYQ NOV-2024',NULL,'1737649997-Advanced JAVA PYQ Nov-2024.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:33:17','2025-01-23 16:33:17'),
+(161,'4','403','Text Book',NULL,'1737650024-Computer-Network TextBook.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:33:44','2025-01-23 16:33:44'),
+(162,'4','403','Text book QS',NULL,'1737650037-Computer Networks Txtbook_QS.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:33:57','2025-01-23 16:33:57'),
+(163,'4','403','techMAX',NULL,'1737650066-Computer Networks TechMax.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:34:26','2025-01-23 16:34:26'),
+(164,'4','403','PYQ-nov-2024',NULL,'1737650091-Computer Networks PYQ Nov-2024.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:34:51','2025-01-23 16:34:51'),
+(165,'4','404','Textbook',NULL,'1737650686-Software-Engineering TextBook.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:44:46','2025-01-23 16:44:46'),
+(166,'4','404','textbook_QS',NULL,'1737650695-Software Eng TxtBook_QS.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:44:55','2025-01-23 16:44:55'),
+(167,'4','404','TechMax',NULL,'1737650716-Software Engineering TechMax.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:45:16','2025-01-23 16:45:16'),
+(168,'4','404','PYQ_Nov_2024',NULL,'1737650729-Software Engineering PYQ Nov-2024.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:45:29','2025-01-23 16:45:29'),
+(169,'4','405','Textbook',NULL,'1737650749-Linear-algebra TextBook.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:45:49','2025-01-23 16:45:49'),
+(170,'4','405','textbook_QS',NULL,'1737650757-Linear Algebra TxtBook_QS.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:45:57','2025-01-23 16:45:57'),
+(171,'4','405','TechMax',NULL,'1737650771-Linear Algebra using Python TechMax.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:46:11','2025-01-23 16:46:11'),
+(172,'4','405','PYQ_Nov_2024',NULL,'1737650783-Linear algebra using python PYQ Nov-2024.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:46:23','2025-01-23 16:46:23'),
+(173,'4','406','Textbook',NULL,'1737651057-.Net-technology TextBook.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:50:57','2025-01-23 16:50:57'),
+(174,'4','406','textbook_QS',NULL,'1737651066-Net Technologies TextBook_QS-1.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:51:06','2025-01-23 16:51:06'),
+(175,'4','406','TechMax',NULL,'1737651077-.NET Technologies TechMax.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:51:17','2025-01-23 16:51:17'),
+(176,'4','406','PYQ_Nov_2024',NULL,'1737651086-NET technologies PYQ Nov-2024.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:51:26','2025-01-23 16:51:26'),
+(177,'4','407','Textbook',NULL,'1737651113-Android-developer-fundamentals TextBook.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:51:53','2025-01-23 16:51:53'),
+(178,'4','407','textbook_QS',NULL,'1737651121-Android Developement Fundamental TextBook_QS.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:52:01','2025-01-23 16:52:01'),
+(179,'4','407','TechMax',NULL,'1737651154-Android Developer Fundamentals TechMax.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:52:35','2025-01-23 16:52:35'),
+(180,'4','407','PYQ_Nov_2024',NULL,'1737651168-Andriod developer fundamentals PYQ Nov-2024.pdf','ayubmohideen@gmail.com','Ayyub','2025-01-23 16:52:48','2025-01-23 16:52:48'),
+(181,'2','299','Sem 2 Repeater Exam Results (November 2024)',NULL,'1741779810-LEDGER-OF-FYBSC-CS-SEM-II-SECOND-HALF-NOVEMBER-2024-EXAMINATION.pdf','yashskolambekar2015@gmail.com','Yash','2025-03-12 11:43:30','2025-03-12 11:43:30'),
+(182,'4','499','Exam Timetable - May 2025',NULL,'1742183491-5_6242261324332537350.pdf','yashskolambekar2015@gmail.com','Yash','2025-03-17 03:51:31','2025-03-17 03:51:31'),
+(183,'3','399','January 2025 - Sem 3 Results',NULL,'1742474582-LEDGER-OF-SYBSC-CS-SEM-III-SECOND-HALF-JANUARY-2025-EXAMINATION.pdf','yashskolambekar2015@gmail.com','Yash','2025-03-20 12:43:03','2025-03-20 12:43:03'),
+(184,'4','406','PYQ_Ans_Nov-2024',NULL,'1744166327-.Net Technologies PYQ nov_2024.html','ayubmohideen@gmail.com','Ayyub','2025-04-09 02:38:47','2025-04-09 02:38:47'),
+(185,'4','407','PYQ_Ans',NULL,'1744648805-Android Developer Fundamentals  PYQ_Ans.html','ayubmohideen@gmail.com','Ayyub','2025-04-14 16:40:05','2025-04-14 16:40:05'),
+(186,'4','407','TextBook_Ans',NULL,'1744882110-Android Fundamentals Txt_Book_Ans.html','ayubmohideen@gmail.com','Ayyub','2025-04-17 09:28:30','2025-04-17 09:28:30'),
+(187,'4','402','Advance java_TextBook_Qs',NULL,'1745057346-Advance java_TextBook_Qs.html','ayubmohideen@gmail.com','Ayyub','2025-04-19 10:09:06','2025-04-19 10:09:06'),
+(188,'4','402','Advance_java_pyqAns_Nov2024',NULL,'1745058388-Advance_java_pyqAns_Nov2024.html','ayubmohideen@gmail.com','Ayyub','2025-04-19 10:26:28','2025-04-19 10:26:28'),
+(189,'4','403','ComputerNetworks_PyqAns_Nov2024',NULL,'1745059249-ComputerNetworks_PyqAns_Nov2024.html','ayubmohideen@gmail.com','Ayyub','2025-04-19 10:40:49','2025-04-19 10:40:49'),
+(190,'4','401','Fundamentals of Algorithms_pyqAns_nov2024',NULL,'1745059787-Fundamentals of Algorithms_pyqAns_nov2024.html','ayubmohideen@gmail.com','Ayyub','2025-04-19 10:49:47','2025-04-19 10:49:47'),
+(191,'4','404','Softwere Engineering PyqAns_Nov2024',NULL,'1745062336-Softwere Engineering PyqAns_Nov2024.html','ayubmohideen@gmail.com','Ayyub','2025-04-19 11:32:16','2025-04-19 11:32:16'),
+(193,'4','405','Liner Algebra PyqAns_Nov2024',NULL,'1745133332-linear algebra PyqAns_Nov2024.html','ayubmohideen@gmail.com','Ayyub','2025-04-20 07:15:32','2025-04-20 07:15:32'),
+(194,'4','405','LinearAlgebra_TextBook_Qs_Ans',NULL,'1745235667-LinearAlgebra_TextBook_Qs_Ans.html','ayubmohideen@gmail.com','Ayyub','2025-04-21 11:41:07','2025-04-21 11:41:07'),
+(195,'4','406','.NET tenhnologies TxtBookQsAns',NULL,'1745257889-.NET tenhnologies TxtBookQsAns.html','ayubmohideen@gmail.com','Ayyub','2025-04-21 17:51:29','2025-04-21 17:51:29'),
+(196,'4','404','Software Engineering TxtBookQsAns',NULL,'1745304466-Software Engineering TxtBookQsAns.html','ayubmohideen@gmail.com','Ayyub','2025-04-22 06:47:46','2025-04-22 06:47:46'),
+(197,'5','501','Text Book',NULL,'1745411338-Artificial-Intelligence.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:28:59','2025-04-23 12:28:59'),
+(198,'5','502','Text Book',NULL,'1745411349-Linux-server-administration.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:29:09','2025-04-23 12:29:09'),
+(199,'5','504','Text Book',NULL,'1745411357-Information-and-network-security.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:29:17','2025-04-23 12:29:17'),
+(200,'5','505','Text Book',NULL,'1745411370-Architecturing-of-IoT.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:29:30','2025-04-23 12:29:30'),
+(201,'5','506','Text Book',NULL,'1745411377-Web-Services.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:29:37','2025-04-23 12:29:37'),
+(202,'5','507','Text Book',NULL,'1745411384-Game-programming.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:29:44','2025-04-23 12:29:44'),
+(203,'6','601','Text Book',NULL,'1745411441-Wireless-sensor-networks-and-mobile-communication.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:30:41','2025-04-23 12:30:41'),
+(204,'6','602','Text Book',NULL,'1745411447-Cloud-computing.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:30:47','2025-04-23 12:30:47'),
+(205,'6','603','Text Book',NULL,'1745411455-Cyber-forensics.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:30:55','2025-04-23 12:30:55'),
+(206,'6','604','Text Book',NULL,'1745411462-Information-Retrieval.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:31:02','2025-04-23 12:31:02'),
+(207,'6','605','Text Book',NULL,'1745411469-Digital-image-processing.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:31:09','2025-04-23 12:31:09'),
+(208,'6','606','Text Book',NULL,'1745411476-Data-science.pdf','ayubmohideen@gmail.com','Ayyub','2025-04-23 12:31:16','2025-04-23 12:31:16'),
+(210,'5','501','TxtBookQsAns',NULL,'1745430700-Artificial Intelligence TxtBookQsAns.html','ayubmohideen@gmail.com','Ayyub','2025-04-23 17:51:40','2025-04-23 17:51:40'),
+(211,'5','502','TxtBookQsAns',NULL,'1745430716-LINUX SERVER admin TxtBookQsAns.html','ayubmohideen@gmail.com','Ayyub','2025-04-23 17:51:56','2025-04-23 17:51:56'),
+(212,'5','504','TxtBookQsAns',NULL,'1745430743-Information and Network Security TextBookQsAns.html','ayubmohideen@gmail.com','Ayyub','2025-04-23 17:52:23','2025-04-23 17:52:23'),
+(213,'5','505','TxtBookQsAns',NULL,'1745484652-Architecture of IoT TxtBookQsAns.html','ayubmohideen@gmail.com','Ayyub','2025-04-24 08:50:52','2025-04-24 08:50:52'),
+(214,'5','507','TxtBookQsAns',NULL,'1745573276-Game progamming TxtBookQsAns.html','ayubmohideen@gmail.com','Ayyub','2025-04-25 09:27:56','2025-04-25 09:27:56'),
+(215,'5','506','TxtBookQsAns',NULL,'1745601888-Web Services TxtBookQsAns.html','ayubmohideen@gmail.com','Ayyub','2025-04-25 17:24:48','2025-04-25 17:24:48'),
+(216,'4','402','IMP_QS_Ans',NULL,'1746284238-IMP_QS_Ans AdvanceJava.html','ayubmohideen@gmail.com','Ayyub','2025-05-03 14:57:18','2025-05-03 14:57:18'),
+(217,'4','403','IMP_QS_Ans',NULL,'1746284254-IMP_QS_Ans ComputerNetworks.html','ayubmohideen@gmail.com','Ayyub','2025-05-03 14:57:34','2025-05-03 14:57:34'),
+(218,'4','406','IMP_QS_Ans',NULL,'1746284266-IMP_QS_Ans .NetTechnologies.html','ayubmohideen@gmail.com','Ayyub','2025-05-03 14:57:46','2025-05-03 14:57:46'),
+(219,'4','407','IMP_QS_Ans',NULL,'1746284286-IMP_QS_Ans AndroidStudio.html','ayubmohideen@gmail.com','Ayyub','2025-05-03 14:58:06','2025-05-03 14:58:06'),
+(220,'6','602','TxtBook_QnA',NULL,'1746544795-Cloud Computing TxtBookQnA.html','ayubmohideen@gmail.com','Ayyub','2025-05-06 15:19:55','2025-05-06 15:19:55'),
+(221,'6','603','TxtBook_QnA',NULL,'1746544815-Cyber Forensics TxtBookQnA.html','ayubmohideen@gmail.com','Ayyub','2025-05-06 15:20:15','2025-05-06 15:20:15'),
+(222,'6','604','TxtBook_QnA',NULL,'1746544837-Information Retrieval TxtBookQnA.html','ayubmohideen@gmail.com','Ayyub','2025-05-06 15:20:37','2025-05-06 15:20:37'),
+(223,'6','605','TxtBook_QnA',NULL,'1746544858-Digital Image processing TxtBookQsAns.html','ayubmohideen@gmail.com','Ayyub','2025-05-06 15:20:58','2025-05-06 15:20:58'),
+(224,'6','606','TxtBook_QnA',NULL,'1746544875-Data Science TxtBookQnA.html','ayubmohideen@gmail.com','Ayyub','2025-05-06 15:21:15','2025-05-06 15:21:15'),
+(225,'3','399','Repeater examination time table May 2025',NULL,'1746557327-SYBSc-in-CS-sem-IIIrepeater-May-2025 (1).pdf','yashskolambekar2015@gmail.com','Yash','2025-05-06 18:48:47','2025-05-06 18:48:47'),
+(227,'6','601','TxtBook QnA',NULL,'1746870252-WirelessSensorNetworks TxtBookQnA.html','ayubmohideen@gmail.com','Ayyub','2025-05-10 09:44:12','2025-05-10 09:44:12'),
+(229,'5','504','PYQ-FEB-2025',NULL,'1746877921-Information & Networking Security PYQ-FEB-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 11:52:01','2025-05-10 11:52:01'),
+(230,'5','505','PYQ-FEB-2025',NULL,'1746877944-Architecting of IOT PYQ_FEB-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 11:52:24','2025-05-10 11:52:24'),
+(231,'5','507','PYQ-FEB-2025',NULL,'1746877963-Game programming PYQ_FEB-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 11:52:43','2025-05-10 11:52:43'),
+(232,'5','507','PYQ ANS -FEB-2025',NULL,'1746877991-Game Programming PYQ QnA-FEB-2025.html','ayubmohideen@gmail.com','Ayyub','2025-05-10 11:53:11','2025-05-10 11:53:11'),
+(233,'5','501','PYQ ANS -FEB-2025',NULL,'1746878021-AI PYQ ANS-FEB-2025.html','ayubmohideen@gmail.com','Ayyub','2025-05-10 11:53:41','2025-05-10 11:53:41'),
+(234,'5','504','PYQ ANS -FEB-2025',NULL,'1746878037-INS-PYQnA-FEB-2025.html','ayubmohideen@gmail.com','Ayyub','2025-05-10 11:53:57','2025-05-10 11:53:57'),
+(235,'5','505','PYQ ANS -FEB-2025',NULL,'1746878052-IoT PYQ QnA_FEB-2025.html','ayubmohideen@gmail.com','Ayyub','2025-05-10 11:54:12','2025-05-10 11:54:12'),
+(236,'5','502','PYQ-ANS-FEB-2025',NULL,'1746881562-Linux PYQ QnA FEB-2025.html','ayubmohideen@gmail.com','Ayyub','2025-05-10 12:52:42','2025-05-10 12:52:42'),
+(237,'6','601','TxTBook Qs',NULL,'1746896702-Wireless Sensor TxtBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:05:02','2025-05-10 17:05:02'),
+(238,'6','602','TxTBook Qs',NULL,'1746896717-cloud computing TxTBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:05:17','2025-05-10 17:05:17'),
+(239,'6','603','TxTBook Qs',NULL,'1746896723-cyber forensics TxTBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:05:23','2025-05-10 17:05:23'),
+(240,'6','604','TxTBook Qs',NULL,'1746896731-info retrieval TxTBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:05:31','2025-05-10 17:05:31'),
+(241,'6','605','TxTBook Qs',NULL,'1746896737-digital image processing TxTBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:05:37','2025-05-10 17:05:37'),
+(242,'6','606','TxTBook Qs',NULL,'1746896745-data science TxTBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:05:45','2025-05-10 17:05:45'),
+(244,'5','501','TxTBookQs',NULL,'1746897562-AI TextBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:19:22','2025-05-10 17:19:22'),
+(245,'5','502','TxTBookQs',NULL,'1746897568-Linux TxTBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:19:28','2025-05-10 17:19:28'),
+(246,'5','504','TxTBookQs',NULL,'1746897577-INS TxTbookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:19:37','2025-05-10 17:19:37'),
+(247,'5','505','TxTBookQs',NULL,'1746897585-IoT TxtBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:19:45','2025-05-10 17:19:45'),
+(248,'5','506','TxTBookQs',NULL,'1746897593-WEB SERVICES TxTBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:19:53','2025-05-10 17:19:53'),
+(249,'5','507','TxTBookQs',NULL,'1746897598-Game Programming TxtbookQs.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-10 17:19:58','2025-05-10 17:19:58'),
+(250,'6','602','PYQ&A -DEC-2024',NULL,'1746938030-Cloud Computing PYQ_Q&A DEC-2024.html','ayubmohideen@gmail.com','Ayyub','2025-05-11 04:33:50','2025-05-11 04:33:50'),
+(251,'6','603','PYQ&A -DEC-2024',NULL,'1746938042-Cyber Forensics PYQ_Q&A DEC-2024.html','ayubmohideen@gmail.com','Ayyub','2025-05-11 04:34:02','2025-05-11 04:34:02'),
+(252,'6','605','PYQ&A -DEC-2024',NULL,'1746938065-Digital image Processing PYQ&A-DEC-2024.html','ayubmohideen@gmail.com','Ayyub','2025-05-11 04:34:26','2025-05-11 04:34:26'),
+(253,'6','606','PYQ&A -DEC-2024',NULL,'1746938077-DataScience PYQ&A-DEC-2024.html','ayubmohideen@gmail.com','Ayyub','2025-05-11 04:34:37','2025-05-11 04:34:37'),
+(255,'4','401','PYQ-MAY-2025',NULL,'1747370674-Fundamental Of Algorithm PYQ-MAY-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-16 04:44:34','2025-05-16 04:44:34'),
+(256,'4','402','PYQ-MAY-2025',NULL,'1747370679-Advance Java PYQ-MAY-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-16 04:44:39','2025-05-16 04:44:39'),
+(257,'4','403','PYQ-MAY-2025',NULL,'1747370684-Computer Networks PYQ-MAY-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-16 04:44:44','2025-05-16 04:44:44'),
+(258,'4','404','PYQ-MAY-2025',NULL,'1747370693-SoftwareEngineering PYQ-MAY-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-16 04:44:53','2025-05-16 04:44:53'),
+(259,'4','405','PYQ-MAY-2025',NULL,'1747370699-LinearAlgrbra PYQ-MAY-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-16 04:44:59','2025-05-16 04:44:59'),
+(260,'4','406','PYQ-MAY-2025',NULL,'1747370706-.Net Technologies PYQ-MAY-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-16 04:45:06','2025-05-16 04:45:06'),
+(261,'4','407','PYQ-MAY-2025',NULL,'1747370720-AndroidStudio PYQ-MAY-2025.pdf','ayubmohideen@gmail.com','Ayyub','2025-05-16 04:45:20','2025-05-16 04:45:20'),
+(262,'4','406','PYQnA-MAY-2025',NULL,'1747370751-.Net PYQnA MAY-2025.html','ayubmohideen@gmail.com','Ayyub','2025-05-16 04:45:51','2025-05-16 04:45:51'),
+(263,'4','402','PYQnA-MAY-2025',NULL,'1747372815-AdvanceJava PYQnA MAY-2025.html','ayubmohideen@gmail.com','Ayyub','2025-05-16 05:20:15','2025-05-16 05:20:15'),
+(264,'4','499','Internal Exams Notice','Internal Exams are scheduled from 3rd June to 12th June','1747392937-Internal-Exam-SYBSc-in-CS-sem-IV-June-2025.pdf','yashskolambekar2015@gmail.com','Yash','2025-05-16 10:55:37','2025-05-16 10:55:37'),
+(265,'4','407','PYQnA MAY-2025',NULL,'1747409258-AndroidStudio PYQnA-MAY-2025.html','ayubmohideen@gmail.com','Ayyub','2025-05-16 15:27:38','2025-05-16 15:27:38'),
+(266,'4','499','Bhavans Practical Examination TimeTable June 2025',NULL,'1749057316-photo_2025-06-04_22-43-59.pdf','yashskolambekar2015@gmail.com','Yash','2025-06-04 17:15:16','2025-06-04 17:15:16'),
+(268,'3','305','June 2025 kt question paper',NULL,'1749306807-cgt-may-2025.pdf','yashskolambekar2015@gmail.com','Yash','2025-06-07 14:33:27','2025-06-07 14:33:27'),
+(276,'4','407','Nov 2025 Repeater Question Paper','Courtesy: Anjanesh','1765952200-Android Developer Fundamentals.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-17 11:46:42','2025-12-17 11:46:42'),
+(277,'4','406','Nov 2025 Repeater Question Paper','Courtesy: Anjanesh','1765952224-NET Technologies.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-17 11:47:05','2025-12-17 11:47:05'),
+(278,'4','405','Nov 2025 Repeater Question Paper','Courtesy: Anjanesh','1765952244-Linear Algebra with Python.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-17 11:47:26','2025-12-17 11:47:26'),
+(279,'4','403','Nov 2025 Repeater Question Paper','Courtesy: Anjanesh','1765952258-Computer Networks.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-17 11:47:40','2025-12-17 11:47:40'),
+(280,'4','404','Nov 2025 Repeater Question Paper','Courtesy: Anjanesh','1765952271-Software Engineering.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-17 11:47:53','2025-12-17 11:47:53'),
+(281,'4','402','Nov 2025 Repeater Question Paper','Courtesy: Anjanesh','1765952284-Advanced Java.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-17 11:48:07','2025-12-17 11:48:07'),
+(282,'4','401','Nov 2025 Repeater Question Paper','Courtesy: Anjanesh','1765952300-Fundamentals of Algorithms.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-17 11:48:23','2025-12-17 11:48:23'),
+(284,'5','599','Dec-Jan Sem V Timetable',NULL,'1765978661-Screenshot_20251217_190643.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-17 19:07:44','2025-12-17 19:07:44'),
+(285,'5','501','PYQ - April 2025',NULL,'1766636898-science_bsc-computer-science_semester-5_2025_april_artificial-intelligence-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-25 09:58:22','2025-12-25 09:58:22'),
+(286,'5','501','PYQ - April 2024',NULL,'1766636915-science_bsc-computer-science_semester-5_2024_april_artificial-intelligence-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-25 09:58:36','2025-12-25 09:58:36'),
+(287,'5','501','PYQ - Nov 2024',NULL,'1766636927-science_bsc-computer-science_semester-5_2024_november_artificial-intelligence-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-25 09:58:48','2025-12-25 09:58:48'),
+(288,'5','501','PYQ - Nov 2023',NULL,'1766636942-science_bsc-computer-science_semester-5_2023_november_artificial-intelligence-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-25 09:59:05','2025-12-25 09:59:05'),
+(289,'5','505','PYQ - Undated (1)',NULL,'1766637814-Architecting of IOT.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-25 10:13:35','2025-12-25 10:13:35'),
+(291,'5','505','PYQ - Undated (3)',NULL,'1766637837-Architecting of IOT (2).pdf','yashskolambekar2015@gmail.com','Yash','2025-12-25 10:13:58','2025-12-25 10:13:58'),
+(292,'5','599','Internal Exam Timetable Jan 2026',NULL,'1766638510-5_6217630271005532488.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-25 10:25:12','2025-12-25 10:25:12'),
+(293,'5','507','Nov 2023 PYQ',NULL,'1766851224-science_bsc-computer-science_semester-5_2023_november_elective-2-game-programming-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-27 21:30:26','2025-12-27 21:30:26'),
+(294,'5','507','April 2024 PYQ',NULL,'1766851303-science_bsc-computer-science_semester-5_2024_april_elective-2-game-programming-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-27 21:31:45','2025-12-27 21:31:45'),
+(295,'5','507','April 2025 PYQ',NULL,'1766851351-science_bsc-computer-science_semester-5_2025_april_elective-2-game-programming-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-27 21:32:33','2025-12-27 21:32:33'),
+(296,'5','507','Nov 2024 PYQ',NULL,'1766851368-science_bsc-computer-science_semester-5_2024_november_elective-2-game-programming-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-27 21:32:49','2025-12-27 21:32:49'),
+(297,'5','502','PYQ April 2025',NULL,'1766974097-science_bsc-computer-science_semester-5_2025_april_elective-1-linux-server-administration-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-29 07:38:20','2025-12-29 07:38:20'),
+(298,'5','502','PYQ Nov 2024',NULL,'1766974132-science_bsc-computer-science_semester-5_2024_november_elective-1-linux-server-administration-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-29 07:38:55','2025-12-29 07:38:55'),
+(299,'5','502','PYQ Nov 2023',NULL,'1766974148-science_bsc-computer-science_semester-5_2023_november_elective-1_-linux-server-administration-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2025-12-29 07:39:10','2025-12-29 07:39:10'),
+(300,'5','504','PYQ APRIL 2025',NULL,'1767275945-science_bsc-computer-science_semester-5_2025_april_information-network-security-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-01 19:29:06','2026-01-01 19:29:06'),
+(301,'5','504','PYQ APRIL 2024',NULL,'1767275957-science_bsc-computer-science_semester-5_2024_april_information-network-security-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-01 19:29:20','2026-01-01 19:29:20'),
+(302,'5','504','PYQ NOV 2024',NULL,'1767276000-science_bsc-computer-science_semester-5_2024_november_information-network-security-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-01 19:30:02','2026-01-01 19:30:02'),
+(303,'5','504','PYQ NOV 2025',NULL,'1767276009-science_bsc-computer-science_semester-5_2023_november_information-network-security-r-2023.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-01 19:30:17','2026-01-01 19:30:17'),
+(304,'5','505','PYQ APRIL 2023',NULL,'1767368514-science_bsc-computer-science_semester-5_2023_april_elective-ii-architecting-of-iot-cbcs.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-02 21:11:57','2026-01-02 21:11:57'),
+(305,'5','504','PYQ JAN 2026',NULL,'1767623643-DocScanner Jan 5, 2026 7-56 PM-5.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-05 20:04:04','2026-01-05 20:04:04'),
+(306,'5','501','PYQ JAN 2026',NULL,'1767623658-DocScanner Jan 5, 2026 7-56 PM-4.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-05 20:04:20','2026-01-05 20:04:20'),
+(308,'5','502','PYQ JAN 2026',NULL,'1767623672-DocScanner Jan 5, 2026 7-56 PM-3.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-05 20:04:53','2026-01-05 20:04:53'),
+(309,'5','507','PYQ JAN 2026',NULL,'1767623715-DocScanner Jan 5, 2026 7-56 PM-2.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-05 20:05:17','2026-01-05 20:05:17'),
+(310,'5','505','PYQ JAN 2026',NULL,'1767623732-DocScanner Jan 5, 2026 7-56 PM-1.pdf','yashskolambekar2015@gmail.com','Yash','2026-01-05 20:05:34','2026-01-05 20:05:34'),
+(311,'6','607','TxTBookQs',NULL,'1772739957-ethical hacking TxTBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2026-03-06 01:15:58','2026-03-06 01:15:58'),
+(312,'6','607','TxTBookQs',NULL,'1772739958-ethical hacking TxTBookQs.pdf','ayubmohideen@gmail.com','Ayyub','2026-03-06 01:15:59','2026-03-06 01:15:59'),
+(313,'6','607','TxtBook_QnA',NULL,'1772739985-Ethical Hacking TxtBook_QnA.html','ayubmohideen@gmail.com','Ayyub','2026-03-06 01:16:26','2026-03-06 01:16:26'),
+(314,'6','607','PYQ June-2025',NULL,'1772740063-Ethical Hacking PYQ June-2025.pdf','ayubmohideen@gmail.com','Ayyub','2026-03-06 01:17:43','2026-03-06 01:17:43'),
+(315,'6','607','PYQ June-2025 QnAns',NULL,'1772740094-Ethical Hacking June2025 PyQnAns.html','ayubmohideen@gmail.com','Ayyub','2026-03-06 01:18:16','2026-03-06 01:18:16'),
+(316,'6','607','PYQ Dec-2024',NULL,'1772740138-Ethical Hacking.pdf','ayubmohideen@gmail.com','Ayyub','2026-03-06 01:19:01','2026-03-06 01:19:01'),
+(317,'6','607','PYQ&A-DEC-2024',NULL,'1772740160-Ethical Hacking PYQ&A-DEC-2024.html','ayubmohideen@gmail.com','Ayyub','2026-03-06 01:19:21','2026-03-06 01:19:21');
+/*!40000 ALTER TABLE `resources` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `sessions`
+--
+
+DROP TABLE IF EXISTS `sessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sessions` (
+  `id` varchar(255) NOT NULL,
+  `user_id` bigint(20) unsigned DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` longtext NOT NULL,
+  `last_activity` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sessions_user_id_index` (`user_id`),
+  KEY `sessions_last_activity_index` (`last_activity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sessions`
+--
+
+LOCK TABLES `sessions` WRITE;
+/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+set autocommit=0;
+INSERT INTO `sessions` VALUES
+('0HxC3brufDLJItqQ9JGsZUc5d5r9owHyVEDuyOYt',NULL,'66.132.172.40','Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)','YTozOntzOjY6Il90b2tlbiI7czo0MDoibXMyMk9ZRXdtM0RFMW5Gc3NwWHhpSlZOSVRkcGF1RkFVSTc0Q0kwTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHA6Ly80OS4xMy41My4xNzg6MzI3NzMvbTFqNDczaGpyaTRfbXdzY3EiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1779196006),
+('0iZxawyILuipgyyLG9JWeFlHDFV3pKos3Gr6eml1',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQ1ZzY1FEcnZ2b1A4UjdZcE16ZVNEV0N4Y2ZEYUdGVHM4VExrcDFFbiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTc6Imh0dHA6Ly9jcy5jZG9lLmluIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779201034),
+('0J3UG8ugNjhhDwaMOmsJnQD4syP4yfCv8Om5QW2j',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiek9YVXgzMndmeXNzQlVWMWZINW1oVjFaTFVuWXBPS1lUZE9ZWGlPUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9jcy5jZG9lLmluL3VwZGF0ZXMvaW1wb3J0YW50LWxpbmtzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779201095),
+('0Psv71uXsX1Wd8k8nfHp6558kcnMDs9TSXeOPj9w',NULL,'10.0.3.2','NetworkingExtension/8624.1.16.10.6 Network/5812.102.3 iOS/26.4.2','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSlNNVHdDcUJlUmx3ZXhFeGpjR2N2dmFMbXN1aTdCTVF0WjI4bTVtViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly9jcy5jZG9lLmluL2FwcGxlLXRvdWNoLWljb24ucG5nIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779203012),
+('2bbQmB2hPH1AblqKBTQ5xLbpbM9OLdC0jbQ7KJeY',NULL,'10.0.3.2','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSTBTcUNGSWlIelBGNXJ0OWRIc0VtZ0FMOU9Td1JOZEJjWmhLSlYzMSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly9jcy5jZG9lLmluL25vdGUvMTcyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779234258),
+('2K9O3AmSiXFg3aumVBUjBSYHVi5a4BXqIHHAIakT',NULL,'10.0.3.2','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoid1FTWWxqOEtZQWZJb0R3dkd6UE5lSjVRdFMxbXk0b3M3S2JtV093SyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly9jcy5jZG9lLmluL25vdGUvMjU5Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779234257),
+('727welwVud5atDCQwiURkuRcqR79XV30UgbP4DVe',NULL,'10.0.3.2','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiem5hc0JuOTc4N3llTnZobEZEZ2xDZjZhR0NxMlZVY2xXbENNWGdPNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly9jcy5jZG9lLmluL25vdGUvMTY5Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779206909),
+('9Sa5JcXit7JzPa1HGV42Tlf77qxxMiUdWYE3iH2L',NULL,'10.0.3.2','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZmpBdERrdmFRTU9DbHdDbWhtdE10YXV5YW9JcmJsN052Vk9kcXBiaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTc6Imh0dHA6Ly9jcy5jZG9lLmluIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779198609),
+('BQM9ArbkNNU8huNHiQLBRkJx3drHy6MCQzKTC38n',NULL,'10.0.3.2','Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Mobile/15E148 Safari/604.1 Brave','YTozOntzOjY6Il90b2tlbiI7czo0MDoiRm5zaHZ4NHhBa2h2TjhVVUFOV1E2STR1R1lHZG9zMlBRdVpWdmVWUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9jcy5jZG9lLmluLzMwNSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1779225138),
+('CMXmqIvgidONJfsTWmRd51pSlMw8Cgg131eHTJmP',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoic3hXM0tQUTRrT3dEVFF5MHliMUN6c0tBWUsxOTBET08wdllna1JmdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779232532),
+('erOs3BjjOBCobDrDoJgDYgi7D2pmV4CFQZCyEMBP',NULL,'10.0.3.2','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiY2RwUGNEUnN5V3NyWmN2THloWEEzR0NYWnR6TjlmeGFBT05KRURUciI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly9jcy5jZG9lLmluL25vdGUvMTY5Ijt9fQ==',1779196859),
+('Ey4zmtHj7tFpN01oxqJAUwVwKTh7560xy8yUJVdP',NULL,'10.0.3.2','NetworkingExtension/8624.1.16.10.6 Network/5812.102.3 iOS/26.4.2','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSmFBZjJSUWtheVhhTFJIY0hPRThtdzY5YzJtNTZlVlhoSTNVYnM2WCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTA6Imh0dHA6Ly9jcy5jZG9lLmluL2FwcGxlLXRvdWNoLWljb24tcHJlY29tcG9zZWQucG5nIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779203012),
+('fricGEpsBOPO2CMybnnLOpa330yzxSiMcx8CUJz5',NULL,'10.0.3.2','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiSVlYSkNpZWhRbXhmeE1kcWlmVXgxcW9qNXJyZG42djlacXZ0OVZidiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly9jcy5jZG9lLmluL25vdGUvMTcwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779214234),
+('Gd0MFXIK9Sc81DvM2FhW9XxlPPealN5w34LxksNv',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVXl4c0hKanRsNlh3cTN2ajNUVE02RHR2WWtRZVJqaTJmUUczcERPSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTc6Imh0dHA6Ly9jcy5jZG9lLmluIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779211786),
+('huEZFP8Rry7bU9oAfFF9iZzv5ax26dWp4XMCONsa',NULL,'10.0.3.2','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoicm5DUEJhbVowQVdVS3puWmthcWNrdzl1a1dQbVVGQkRMUElXYWhzcyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHA6Ly9jcy5jZG9lLmluLzMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1779204334),
+('jg5uiUCpWDhvLYlBNGLCsh1a3oPQiM172RmvdJXd',NULL,'10.0.3.2','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YToyOntzOjY6Il90b2tlbiI7czo0MDoiQ0MwdGxtZmtaWEhRa3dsbTJTb3lLUDF0VWdnbzFUaWVGbHZKOWZMSiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779194785),
+('K65j3PgxkAmBk2luL15QRhtHdZNk5wiOyEC1ibvH',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVHdCU3psUE1tQXB2cFZHTHdvOVBFV1JyM3VQeTl5dGdoc1ZucXBIRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly9jcy5jZG9lLmluL25vdGUvMTk0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779195253),
+('kcmXl2PExw6mUnsImkITGZBEOJ3WWDQJrvrtvlis',NULL,'10.0.3.2','visionheight.com/scan Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Chrome/126.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoicFdxRU1GYlJMSkRlV0JCOWxKSXdiNVlMeTd5dklmdHc5NkVyTkZvRSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTc6Imh0dHA6Ly9jcy5jZG9lLmluIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779228106),
+('mbCj63j4DgRxDztz4V61YQga7ANhbT5FaK9siQNW',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTHRQUEpMNVBiMndUSmVRWnM0anZqcXZXWHIyQWdJQURKRk5KVFBGUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHA6Ly9jcy5jZG9lLmluLzQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1779216118),
+('Mp4Df01dgv9vpPrpJ9rpYHl19ItEI0tjVeZvVWjg',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiZUpwbzZUblhwVVFQbGc0SHJ6N3M4VlA3eWVTMGFUekJQakVXZFJwTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly9jcy5jZG9lLmluL25vdGUvMTY2Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779204053),
+('mSHexVchQnaZeQCPoQU2Ej6puQRDvyYhyodgS3Na',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQ2FnR2NGTm5nMmQ5Um5zTGp3RUZsdEVaMkJ6d3AxMjIyWnhVamU3UyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9jcy5jZG9lLmluLzQwNSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1779204584),
+('MxLMTSksNMoUwWbLGqO9bzcfbHEpjwxBVzbbiPu4',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQ3gwRVZhYU5rTnJjU1ZiOVhoOGhGNXpGdHNZdDluMFo1UjZ6YTRMVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9jcy5jZG9lLmluLzQwNSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1779204595),
+('ORjIbPYzg1RfLnKisE70C2R3LoGlMF73NhU4XXw0',NULL,'10.0.3.2','NetworkingExtension/8624.1.16.10.6 Network/5812.102.3 iOS/26.4','YTozOntzOjY6Il90b2tlbiI7czo0MDoia2RwcTBzREtKaHpvbVd6TFdrM1BPMDAyUDNUeE80ZFp1Z3VVOWliaSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTA6Imh0dHA6Ly9jcy5jZG9lLmluL2FwcGxlLXRvdWNoLWljb24tcHJlY29tcG9zZWQucG5nIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779211821),
+('PsW4KUVGy0qsEmyxD1cSGRa0fQQIOfWiSfPw8D2T',NULL,'66.132.172.40','Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiOFVqNjJJZEVqcUVNVEZZa3hZdkZCb2NHVmxaaHg3QlNQbWpMSmViWiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly80OS4xMy41My4xNzg6MzI3NzMvc2VjdXJpdHkudHh0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779196005),
+('TPFFQx0UhCsI7HrM6DWoUqEJBaimfYoXnCHQEoa8',NULL,'10.0.3.2','Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.3; +https://openai.com/gptbot)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWnN4RXVSOGJiVFZSbHhXWWFZZHdncm1VMFczZmMxYjVIcGtvTDNpTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTc6Imh0dHA6Ly9jcy5jZG9lLmluIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779214111),
+('TPQ1cTFr2AQsUk0zIZ47csLqn2tC76AskQahoP0p',NULL,'10.0.3.2','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.4 (KHTML, like Gecko) Version/9.0.1 Safari/601.2.4 facebookexternalhit/1.1 Facebot Twitterbot/1.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoieTlkck5HZEI2MGZVc3VmZmR0bmZza2cyN2JCVTI0dVV2TGJIdHo0UiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9jcy5jZG9lLmluLzYwNyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1779203012),
+('UdVPRbvXifTdYsno1KKlv69e0sYSvqQTI2eKWhj6',NULL,'10.0.3.2','Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)','YTozOntzOjY6Il90b2tlbiI7czo0MDoieE5HUGlVaUNDTXpjTGdwcTJMeG9TT3FaOUpoUmhhV2NlQUtVNkloMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTc6Imh0dHA6Ly9jcy5jZG9lLmluIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779200910),
+('WPcFanq4B4h02H5tbYr8JI56u5vrIK5Amdj0J9tP',NULL,'10.0.3.2','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoidkZUbWF1QjBPMkJDQUxBN21weFRZTzVMZlVuUDM1aTJpcVlPY3RvWCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly9jcy5jZG9lLmluL25vdGUvMTg0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779206363),
+('WuJ3l1hZctdJ637o9fMfPAzNpFIKdTKGmlMbGZHk',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUFZ2R0l1RDZjVjQ1T2ZNZjNmN2RGb2hKTk5Fd2IxdHpXMFJqZEFjMyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk6Imh0dHA6Ly9jcy5jZG9lLmluLzQiO319',1779221934),
+('wWkZgmfsssQxbGxLMUTYW7oCKtiofziXHGR99WzV',NULL,'10.0.3.2','Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiVENldjhFdTdqeVBLTXliSVVMbFg1SHpPSnhobHZyeDNPZVR3bjZmZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTc6Imh0dHA6Ly9jcy5jZG9lLmluIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1779203871),
+('X1O7v4t2815xVP92phX6y09L7G5WXQAmaGc1A7Tj',NULL,'66.132.172.40','Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUms0aFZSbERWRlRTWHYzU3pPZXBhTzdQeWk1NU9ha1NLNVpDOHpPcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly80OS4xMy41My4xNzg6MzI3NzMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1779195986);
+/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `subjects`
+--
+
+DROP TABLE IF EXISTS `subjects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `subjects` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `semester` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `subjects_code_unique` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subjects`
+--
+
+LOCK TABLES `subjects` WRITE;
+/*!40000 ALTER TABLE `subjects` DISABLE KEYS */;
+set autocommit=0;
+INSERT INTO `subjects` VALUES
+(1,1,'Programming with Python 1','102','2024-09-26 20:30:33','2024-09-26 20:30:33'),
+(2,1,'Database Systems','104','2024-09-26 20:32:27','2024-09-26 20:32:27'),
+(3,1,'Free and Open Source Software','103','2024-09-26 20:32:34','2024-09-26 20:32:34'),
+(4,1,'Discrete Mathematics','105','2024-09-26 20:32:44','2024-09-26 20:32:44'),
+(5,1,'Soft Skills Development','107','2024-09-26 20:33:12','2024-09-26 20:33:12'),
+(6,1,'Computer Organisation and Design','101','2024-09-26 20:33:20','2024-09-26 20:33:20'),
+(7,1,'Descriptive Statistics','106','2024-09-26 20:33:29','2024-09-26 20:33:29'),
+(8,2,'Programming With Python 2','202','2024-09-26 20:33:40','2024-09-26 20:33:40'),
+(9,2,'Calculus','205','2024-09-26 20:33:48','2024-09-26 20:33:48'),
+(10,2,'Programming with C','201','2024-09-26 20:33:58','2024-09-26 20:33:58'),
+(11,3,'Theory of Computation','301','2024-09-28 05:41:32','2024-09-28 05:41:32'),
+(12,3,'Core Java','302','2024-09-28 05:41:42','2024-09-28 05:41:42'),
+(13,3,'Operating System','303','2024-09-28 05:41:54','2024-09-28 05:41:54'),
+(14,3,'Database Management Systems','304','2024-09-28 05:42:07','2024-09-28 05:42:07'),
+(15,3,'Combinatorics and Graph Theory','305','2024-09-28 05:42:18','2024-09-28 05:42:18'),
+(16,3,'Physical Computing and IoT Programming','306','2024-09-28 05:42:32','2024-09-28 05:42:32'),
+(17,3,'Web Programming','307','2024-09-28 05:42:48','2024-09-28 05:42:48'),
+(18,3,'General (Sem 3)','399','2024-09-28 05:43:18','2024-09-28 05:43:18'),
+(19,2,'Linux','203','2024-09-29 16:19:36','2024-09-29 16:19:36'),
+(20,2,'Data Structures','204','2024-09-29 16:21:29','2024-09-29 16:21:29'),
+(21,2,'Statistical Methods and Testing of Hypothesis','206','2024-09-29 16:28:19','2024-09-29 16:28:19'),
+(22,2,'Green Technologies','207','2024-09-29 16:30:12','2024-09-29 16:30:12'),
+(23,2,'General (Sem 2)','299','2024-10-05 09:52:29','2024-10-05 09:52:29'),
+(24,1,'General (Sem 1)','199','2024-10-18 13:10:53','2024-10-18 13:10:53'),
+(25,4,'Fundamentals of Algorithms ','401','2025-01-23 06:27:05','2025-01-23 06:27:05'),
+(26,4,'Advanced JAVA ','402','2025-01-23 06:27:16','2025-01-23 06:27:16'),
+(27,4,'Computer Networks','403','2025-01-23 06:27:26','2025-01-23 06:27:26'),
+(28,4,'Software Engineering ','404','2025-01-23 06:27:35','2025-01-23 06:27:35'),
+(29,4,'Linear Algebra using Python','405','2025-01-23 06:27:45','2025-01-23 06:27:45'),
+(30,4,'.NET Technologies ','406','2025-01-23 06:27:59','2025-01-23 06:27:59'),
+(31,4,'Android Developer Fundamentals','407','2025-01-23 06:28:17','2025-01-23 06:28:17'),
+(32,4,'General (Sem 4)','499','2025-01-23 06:28:24','2025-01-23 06:28:24'),
+(33,5,'ARTIFICIAL INTELLIGENCE','501','2025-04-23 12:20:05','2025-04-23 12:20:05'),
+(34,5,'LINUX SERVER   ADMINISTRATION','502','2025-04-23 12:20:25','2025-04-23 12:20:25'),
+(35,5,'INFORMATION AND NETWORK SECURITY','504','2025-04-23 12:20:48','2025-04-23 12:20:48'),
+(36,5,'ARCHITECTING OF IOT','505','2025-04-23 12:21:03','2025-04-23 12:21:03'),
+(37,5,'WEB SERVICES','506','2025-04-23 12:21:17','2025-04-23 12:21:17'),
+(38,5,'GAME PROGRAMMING','507','2025-04-23 12:21:31','2025-04-23 12:21:31'),
+(40,6,'CLOUD COMPUTING','602','2025-04-23 12:23:14','2025-04-23 12:23:14'),
+(41,6,'CYBER FORENSICS','603','2025-04-23 12:23:29','2025-04-23 12:23:29'),
+(43,6,'DIGITAL IMAGE  PROCESSING','605','2025-04-23 12:24:55','2025-04-23 12:24:55'),
+(44,6,'DATA SCIENCE','606','2025-04-23 12:25:08','2025-04-23 12:25:08'),
+(45,6,'ETHICAL HACKING','607','2025-04-23 12:25:19','2025-04-23 12:25:19'),
+(46,5,'General (Sem 5)','599','2025-05-02 12:44:28','2025-05-02 12:44:28'),
+(47,6,'General (Sem 6)','699','2025-05-02 12:44:43','2025-05-02 12:44:43');
+/*!40000 ALTER TABLE `subjects` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `updates`
+--
+
+DROP TABLE IF EXISTS `updates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `updates` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `author_email` varchar(255) NOT NULL,
+  `author_name` varchar(255) NOT NULL,
+  `content` longtext NOT NULL,
+  `semester` int(11) NOT NULL,
+  `approved` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `updates_slug_unique` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `updates`
+--
+
+LOCK TABLES `updates` WRITE;
+/*!40000 ALTER TABLE `updates` DISABLE KEYS */;
+set autocommit=0;
+INSERT INTO `updates` VALUES
+(1,'sem-1-result-2023-2024','Sem 1 Result 2023 - 2024','yashskolambekar2015@gmail.com','Yash','The link to the result pdf -> [Click here](https://mu.ac.in/wp-content/uploads/2024/05/CORR_LEDGER_FYbsc-CS-SEM-I-SH23_310524.pdf)',1,1,'2024-09-26 22:59:26','2024-09-26 22:59:43'),
+(2,'sem-1-resul-2023-2024-excel-sheet','Sem 1 Result in Excelsheet (2023 - 2024)','yashskolambekar2015@gmail.com','Yash','This result is decoded by our team at IDOLCS, if your name is not there in this result, please check the official result PDF, this result does not include some names\n\n\n\n[Click here to view the spreadsheet](https://docs.google.com/spreadsheets/d/1eX-s1Zml_MTOsCmp3NIDvY4c4j9VB4LOixH2e3Dal1I/edit?usp=sharing)\n\n\n\nTo decode results, visit [resultdecoder.idolcs.com](https://resultdecoder.idolcs.com)',1,1,'2024-09-26 23:01:39','2024-10-02 06:14:05'),
+(3,'announcement-of-new-website','Woah, we just had an upgrade','yashskolambekar2015@gmail.com','Yash','Yay, we have a new and improved website!\n\n* It means\n* No more redirects to Telegram for notes\n* No need to download notes, just read on the website\n* Multiple admins / uploaders for maximum content\n* Updates section for important updates in a form of blog post\n\n\n\nBut, this is not all, this is just a temporary website that is built by me for the time being, we will be coming up with a better and bigger website / platform with the help of our team which will provide the users with a better experience!\n\n\n\nStay tuned',0,1,'2024-09-26 23:12:08','2024-09-26 23:12:15'),
+(5,'crowdfunding-campaign','We need your help!','yashskolambekar2015@gmail.com','Yash','We hope you have used this platform and it has **created value** in your academic journey, the project has been free and open source from the beginning. While many people have consistently put out content on the platform, there is minimal contribution from the general members. As we are out of funds to renew the domain, this is the opportunity for everyone to contribute their fair share to the platform, to give back to the community.\n\n\n\n**What is the need for idolcs.com?** one might think. I remember an incident while standing in line for the book collection of Semester 1, one person in his mid-30s was standing in front of me, he was standing there to collect books for his wife, she was in MA in IDOL, he told me that his wife missed her exams twice because nobody notified her and IDOL does not have a systematic infrastructure for their purely distance students. **We are solving it!** Idolcs.com exists because mu.ac.in is incompetent in terms of building a community/platform for students, and as distance learners, we need it the most.\n\n\n\nI request you to contribute monetarily to the project in whatever capacity you can and enable us to gather a sum of Rs. 1500 for domain renewal for the year 2024-2025.\nAnd enable us to keep the show running.\n\n\n\nTo contribute, please visit [campaign.idolcs.com](https://campaign.idolcs.com)',0,1,'2024-09-27 20:38:00','2024-09-27 20:38:07'),
+(6,'campaign-1-successful','Campaign 1 is successful','yashskolambekar2015@gmail.com','Yash','Hey!\n\nI am very happy to announce that our first ever crowfunding campaign has been completed successfully, we collected a sum of Rs.1642 from a total of 14 contributors. The list is as follows\n\n| **N**ame                  | Amount |\n| ------------------------- | ------ |\n| Bipin Yadav               | 100    |\n| Suraj Sharma              | 51     |\n| Santosh                   | 188    |\n| Anjanesh Lekshminarayanan | 250    |\n| Priyanka Agawane          | 100    |\n| Vijay Prasad              | 100    |\n| Anudeep                   | 151    |\n| Juveriya Suleman          | 100    |\n| Nandini                   | 150    |\n| Avinash                   | 101    |\n| Nitin                     | 100    |\n| Rupesh                    | 100    |\n| Ayyub                     | 100    |\n| Yash                      | 51     |\n\nThe goal is fulfilled and the idolcs.com domain has been renewed for another year for a sum of Rs.1432, the remaining amount stays with me (Yash) and shall be added to the next campaign under the name of the community. We are very thankful to all the contributors.\n\nI am personally very pleased by this campaign as it has proved that the community is indeed intact and people actually value the work we do at idolcs.com. Although skeptic at first about whether we will be able to reach the goal or not, we did in less than 24 hours!\n\nI received payments from other members as well after we officially closed the campaign, which I have returned to the original source. We are very thankful to them as well.\n\nThis event has reassured us about the value that we are creating in people\'s academic journey and we are committed to it.\n\nThe platform will be receiving updates gradually and the experience will keep getting better!',0,1,'2024-09-29 09:17:18','2024-09-29 09:18:57'),
+(7,'sem-1-2-3-exam-dates-winter-session','Exam dates for Sem 1, Sem 2 (Repeaters) and Sem 3 (2024-2025) batch','yashskolambekar2015@gmail.com','Yash','Hey there,\n\nIf you have took admission or are about to take admission in **Sem 1** or **Sem 3 CBCS** right now or have KTs in these semesters, this post is of your interest. If you are expecting that you fail in some subjects in the recent **Sem 2** **CBCS** exams, this post is of your interest.\n\nCDOE (Formerly IDOL), University of Mumbai has announced Dates of Commencement for the said exams on the [official website](https://mu.ac.in/distance-open-learning#1550491053039-6aa80c58-a15a).\n\nFresh and Repeater Exams for **Sem 1** and **Sem 3** ([click here](https://idolcs.com/note/84))\n\n| Semester   | Time            | Dates                      |\n| ---------- | --------------- | -------------------------- |\n| Semester 1 | 3:00 to 5:30 pm | 2nd to 10th December 2024  |\n| Semester 3 | 3:00 to 5:30 pm | 12th to 21st December 2024 |\n\n**Repeater only** Exams for **Sem 2** ([click here](https://idolcs.com/note/83))\n\n| Semester   | Time           | Dates                     |\n| ---------- | -------------- | ------------------------- |\n| Semester 2 | 3:00 to 5:30pm | 5th to 13th November 2024 |',0,1,'2024-10-05 10:04:10','2024-10-10 06:43:58'),
+(8,'sem-2-results-2023-2024','Semester 2 Results (2023-24)','yashskolambekar2015@gmail.com','Yash','Results for Semester 2 (2023-24) exam has been released.\n\nView the officially released results PDF -> [click here](https://idolcs.com/note/98)\n\nView the results in a spreadsheet (excelsheet) decoded by result decoder of idolcs.com -> [click here](https://docs.google.com/spreadsheets/d/1oEa8PU-d8Nkci9j8CeNDGGANWx1LllcMUOv_t9TA-S8/edit?usp=sharing)\n\nPlease note that results of some students might not have been included in the spreadsheet due to the limitations of [our decoder](https://resultdecoder.idolcs.com)\n\nYou are advised to check the official pdf in case your result has not been included in the spreadsheet',2,1,'2024-10-10 12:37:34','2024-10-10 12:50:49'),
+(9,'sem-3-admission-and-atkt-forms','Semester 3 admissions and ATKT Exam Forms are now live','yashskolambekar2015@gmail.com','Yash','**Sem 3 Admissions**\n\nThe much awaited Semester 3 admissions are now live, you can visit [https://idoloa.digitaluniversity.ac/Login?student=2](https://idoloa.digitaluniversity.ac/Login?student=2) to start with the admission process. The last date for admission as per the latest update is 30th October 2024.\n\n\n\n**ATKT (Repeater) Exam Forms**\n\nIf you have failed in previous exams (Sem 1 and Sem 2) and are willing to give Repeater exams, the application forms for that are live too\n\n[https://mumidolapp.digitaluniversity.ac/PreExamv2\\_ExamformSubmission\\_PpAmAtWise.aspx](https://mumidolapp.digitaluniversity.ac/PreExamv2_ExamformSubmission_PpAmAtWise.aspx)',0,1,'2024-10-19 10:43:53','2024-10-19 10:43:59'),
+(10,'sem-2-repeater-exams-time-table-nov-2024','Sem 2 Repeater Exams Time Table (Nov 2024)','yashskolambekar2015@gmail.com','Yash','The timetable for Semester 2 repeater exams that are going to be conducted in November 2024 has been released by the university. The exams are going to extend from November 5 to November 13 2024.&#x20;\n\n\n\nThe specific dates are as below, all exams will be from 03:00 PM to 05:30 PM\n\n| Day and Date     | Subject                                       |\n| ---------------- | --------------------------------------------- |\n| Tue, 05 Nov 2024 | Programming with C                            |\n| Wed, 06 Nov 2024 | Programming with Python 2                     |\n| Thu, 07 Nov 2024 | Linux                                         |\n| Fri, 08 Nov 2024 | Data Structures                               |\n| Mon, 11 Nov 2024 | Calculus                                      |\n| Tue, 12 Nov 2024 | Statistical Methods and Testing of Hypothesis |\n| Wed, 13 Nov 2024 | Green Technologies                            |\n\nThe official circular can be checked at [https://idolcs.com/note/106](https://idolcs.com/note/106)',2,1,'2024-10-22 03:15:52','2024-10-22 03:16:01'),
+(11,'semester-1-atkt-examination-form','Forms released for Semester 1 ATKT Examinations','yashskolambekar2015@gmail.com','Yash','Hey!\n\nIf you are a repeater who has backlog in Semester 1, forms have been released for ATKT examinations for Semester 1 fill it by visitng this link ->\n\nhttps://[mumidolapp.digitaluniversity.ac/PreExamv2\\_ExamformSubmission\\_PpAmAtWise.aspx](https://mumidolapp.digitaluniversity.ac/PreExamv2_ExamformSubmission_PpAmAtWise.aspx \"https://mumidolapp.digitaluniversity.ac/PreExamv2_ExamformSubmission_PpAmAtWise.aspx\")\n\nOfficial circular -> [https://idolcs.com/note/109](https://idolcs.com/note/109)',1,1,'2024-11-05 16:30:39','2024-11-05 16:31:58'),
+(12,'dummies-guide-to-idol','Dummies\' guide to IDOL','yashskolambekar2015@gmail.com','Yash','After a year of being in IDOL and being surprised everyday by IDOL. I have entered 2nd year, and here I am seeing a fresh batch of students entering IDOL, entering Semester 1, with new enthusiasm and excitement, which me and my batchmates had a year ago. I am writing this post to note down everything that one must know and follow to survive here\n\nKnow that everything which I will write here is from my personal experience, and can be erroneous, I hold no responsibility for anything, I am just like IDOL&#x20;\n\n***\n\n**PCP Centres**\n\nPCP centre or Personal Contact Programme centre is the place that will be responsible for your lectures, practical sessions, assignments and your practical exams. This place is quite important as having a good PCP centre can help you in your journey but having a bad PCP centre can end your journey with IDOL, what I mean by it, I will explain later in this post.&#x20;\n\n***\n\n**Lectures**\n\nLectures are going to happen online, over Google Meet mostly, I don\'t think any attendance is taken by the teachers, or if it is taken, how much it affects your marks, I haven\'t seen any impact of attendance on the marks.&#x20;\n\nNow, are lectures good? Yes, they are, the lectures are good, as far as my experience goes, I had great fun attending lectures, but you have to be invested in them, as they are online. But this is not true for all the lectures, it depends on teacher to teacher.\n\nBut they are not going to cover your whole syllabus, in my experience, some teachers completed the syllabus and some taught well. Both are not mutually exclusive, but they are going to rarely go together.\nIn my experience, the lectures were taken regulary in Semester 1 but there were little to nothing happening in Semester 2.\n\nSo, as I said, do not be dependent on the lectures\n\n***\n\n**Practicals**\n\nYou will be provided with a PDF of Practical journal, you are supposed to print it and bring it to the centre everytime you come for practical sessions. You can also look at it from your phone but that depends on your centre. Anyways you have to submit the physical journal at the end of the semester. Good thing is, you don\'t have to write anything in the journal, you just have to write your name in the front page and bring it, it has to be spiral bound.\n\nPractical sessions are generally kept on Saturday and Sunday and are of 2-3 hours. You will have more practical sessions as exam approaches. You should pay attention in the practicals as the exact questions (maybe with different values) come in the practical examinations\n\n***\n\n**Communication**\n\nThe communication between you and the teachers (from your pcp centre) and your centre co-ordinator happens over telegram groups or whatsapp groups, it is two way communication, meaning that you can message there too, it won\'t be admin only, but whether the teachers will reply or not is totally uncertain\n\nIn our Bhavans Andheri centre, teachers almost never replied, to be fair, the questions of students were mostly stupid and repetitive but the serious questions did not get reply as well. So good luck&#x20;\n\nNow, talking about student-to-student communication, you are not provided with any official portal for it, you can create a group on some platform for that purpose and talk to your batchmates, at idolcs.com we have a [whatsapp community](https://chat.whatsapp.com/FdwxqYbVH1yBlu2tHxJvIG) where students regardless of pcp centres can communicate and share their thoughts\n\n***\n\n**Books and Notes**\n\nThe books provided by IDOL, are, to be very honest, varying in quality, in some semesters, the quality of books is really good and in others they are just unbearable, there is a lot of plagiarism in it as well, stuff taken directly from the internet, but why should we care as long as we are getting the content.&#x20;\n\nApart from being of poor quality in terms of content, the questions in exams come from the text book only. There is a rare chance of a question which touches topics which are not there in the textbook. So make sure you cover the topics which are there in the textbook\n\nThere are no notes provided by idol, but at idolcs.com, that\'s what we do, you can find notes in the website. Videos, blogpost links and other such content to help you study better\n\n***\n\n**Exams**\n\nThe exams are divided into two parts, written exams (externals) and mcq exams (internals). The exam centre is different from the PCP centre but in some cases, it can be same as the PCP centre.\n\nThe written examinations are of 75 marks. There are no mcq, fill ups or other such questions here, you get only 5 mark questions in the whole paper, which you have to solve. You need 30 marks to pass (ig). The questions are like below\n\n| Q. no | How many Qs to solve | Questions will be from unit | Marks |\n| ----- | -------------------- | --------------------------- | ----- |\n| 1     | 4                    | 1                           | 20    |\n| 2     | 4                    | 2                           | 20    |\n| 3     | 4                    | 3                           | 20    |\n| 4     | 3                    | All (1, 2, 3)               | 15    |\n\nThe MCQ exams are online, taken on eklavya portal, it has 25 questions, you are given a big time frame in which you can attempt the examination. Note that, these exams are equally important and you will get a KT if you don\'t attend a mcq exam, and you can fail in this exam as well\n\n\n\n***\n\n**How to study**\n\nWe studied for the whole Semester in 1st sem but after that we understood how it\'s done. Now generally, people start studying one month or even 1 week before the examination.\n\nRely heavily on the Previous year question papers and textbook questions, if done sincerely, these are enough to pass the exams. Studying like regular college for IDOL will be a waste of time\n\nBut this does not apply to Maths like subjects, you have to give more time, and study regularly to understand the concepts and solve the problems.\n\nWe study from PYQs and most people don\'t even open the textbook, studying from PYQ is the best thing, if you want to at least pass, if you want to top, score alot, you should study regularly\n\n\n\n***\n\n**How to write exams**\n\nWell, the teaching part of IDOL is light and non-serious but the exams are not, exams are of same difficulty level of other regular colleges. But there are some things to note.\n\nFill the paper, the last thing the examiner wants to see is blank space in your paper. Writing long answers, filling at the least a page for one question and attempting all the questions will guarantee you that you will pass, given that you haven\'t wrote complete gibberish.\n\nThe papers are not checked that seriously, which is both a good and a bad thing, you can get less marks for good answers and more marks for bad answers, the only option you then get to score is to fill the paper as much as you can.\n\nAs stalin once said, quantity has a quality of it\'s own.\n\n\n\n***\n\n**Revaluation**\n\nIf you believe that you are scored wrongly, that you have wrote a lot and you were going to pass but the paper checker did not check your paper well, you can apply for revaluation. Which means your paper will be checked again, you have to go to Kalina physically to submit a revaluation request. The announcement will be made on the website, a notice will be served which tells you when and where to go for revaluation forms.\n\nRevaluation is blessing, you should apply if you think there is even 30% chance of you passing.\n\nBut revaluation results are delayed, so along with revaluation fill the KT forms, which brings us to..\n\n\n\n***\n\n**KT**\n\nIf you fail, you are given a chance to apply for the exam again. It is called KT, you get an KT for failing in written exams, another for failing in MCQ exams and another for failing in Practicals. If you are absent, you are considered as fail, and you will get KT.\n\nNow, you are allowed to have 2 KT per semester, which means 4 KT per year, and you can move to next year. But if you have more than that, you are not allowed to go into the next year before clearing them, your year will be wasted if you do not give KT exams and pass them\n\n\n\n***\n\n**KT Exams**\n\nThe ATKT exams or repeater exams are held after some time of results, you will be notified on official channels about the forms. There is a price that you have to pay for these exams, you pay it while filling the exam forms. It is not much.&#x20;\n\nOnce done, you will get halltickets a few days before exams, sometimes just one day before the exam and you have to give it like a normal exam.&#x20;\n\nThe KT exams for Sem 1 happens in the middle of Sem 2 and Sem 2 KT exams happens shortly after the Second year begins.\n\nThe repeater exams for mcq test happen with next batch\'s mcq exams as far as I know\n\n\n\n***\n\n**Zero Trust**\n\nNow, this is something very important. You are responsible for your own fate. Nobody else takes your responsibility in IDOL. Especially the PCP centers.\n\nThis happened with our batchmates of Ratnagiri PCP centre, where they were marked absent for Practical examinations of Semester 1, which means they got 3 KT for 3 practical exams, the whole class was absent as per the results, this was immediately communicated with the PCP centre, they said that they will do something, they said they talked on phone to the IDOL authorities, they have sent email and what not.\n\nBut when the time for admissions came, the students were still marked failed and none of them were able to enter 2nd year.&#x20;\n\nThey then went to IDOL, with all the proofs, a letter from the PCP centre, but at the end, IDOL told us that there is nothing that can be done now, the emails which the PCP centre sent never reached them or if it reached them, they did not do anything, we don\'t know.&#x20;\n\nAll the students who were affected by this have left IDOL now. This ended their journey with IDOL. I would have did the same if I was failed without my fault.\n\nThe lesson that you have to take from this is have 0 trust in anyone\'s word, unofficial acknowledgements or assurance, only trust official paperwork, have proofs of everything.\n\n**If any problem occurs, visit IDOL Kalina centre and do as they say.** Do not trust your PCP centre\n\n\n\n***\n\n**In the end**\n\nYou are going to be exposed to the beautiful efficiency of government organizations in your journey here. We at idolcs.com are there to help you with it! Join the community, it\'s better that way.&#x20;',0,1,'2024-11-15 10:45:28','2024-11-16 15:49:15'),
+(13,'new-exam-dates-released-sem-1-sem-3-2024-25','New Exam Dates releaed for Sem 1 and Sem 3 (2024-25)','yashskolambekar2015@gmail.com','Yash','Hey there,\n\nIf you are in Semester 1 or Semester 3, the new dates for exams have been released\n\n| Semester                   | Exam Date                |\n| -------------------------- | ------------------------ |\n| Sem 1 (Fresh and Repeater) | 5th Dec - 12th Dec 2024  |\n| Sem 3 (Fresh and Repeater) | 17th Dec - 26th Dec 2024 |\n\nRefer to [this document](https://idolcs.com/note/111 \"this document\") for official notice',0,1,'2024-11-18 05:42:54','2024-11-18 05:43:07'),
+(14,'january-2025-sem-1-sem-3-examinations','Sem 1 and Sem 3 Examinations (January 2025)','yashskolambekar2015@gmail.com','Yash','Hey learner,\n\n\n\nIf you are enrolled in Semester 1 or Semester 3, either fresher or repeater, this update is of your interest.\n\n\n\nThe examination timetables for Sem 1 and Sem 3 are released by IDOL on the[ official website](https://mu.ac.in/distance-open-learning/examination#1674299093186-b691f5ba-2142). The details are as below\n\n\n\n**Semester 1**\n\nTime for all examinations  : 3:00PM to 5:30PM\n\n| Day / Date   | Subject                          |\n| ------------ | -------------------------------- |\n| Sat - 04 Jan | Computer Organisation and Design |\n| Mon - 06 Jan | Programming with Python 1        |\n| Tue - 07 Jan | Free and Open Source Software    |\n| Wed - 08 Jan | Database Systems                 |\n| Thu - 09 Jan | Discrete Mathematics             |\n| Fri - 10 Jan | Statistics and Probability       |\n| Sat - 11 Jan | Soft Skills                      |\n\nThe official notification can be accessed at [https://idolcs.com/note/115](https://idolcs.com/note/115)\n\n\n\n**Semester 3**\n\nTime for all examinations: 3:00PM to 5:30PM\n\n\n\n\n\n| Day / Date   | Subject                        |\n| ------------ | ------------------------------ |\n| Tue - 14 Jan | Theory of Computation          |\n| Wed - 15 Jan | Core JAVA                      |\n| Thu - 16 Jan | Operating System               |\n| Fri - 17 Jan | DBMS                           |\n| Sat - 18 Jan | Combinatorics and Graph Theory |\n| Mon - 20 Jan | Physical Computing and IoT     |\n| Tue - 21 Jan | Web Programming                |\n\nThe official notification can be accessed at [https://idolcs.com/note/114](https://idolcs.com/note/114)\n\n\n\nTo get help with exam preparation and other updates, we recommend joining the [community group on whatsapp](https://chat.whatsapp.com/FdwxqYbVH1yBlu2tHxJvIG).\n\n\n\nAll the best',0,1,'2024-12-11 05:32:09','2024-12-11 05:32:15'),
+(15,'sem-4-exams-may-2025-time-table','Sem 4 Exams Timetable ','yashskolambekar2015@gmail.com','Yash','The exam Timetable for Semester 4 exams has been released and the exams are going to be held from **May 3** to **May 13, 2025.** The general opinion as of now is that the dates are not going to be postponed and this shall be considered the final timetable and students shall start preparing accordingly.\n\n| Day / Date   | Subject                        |\n| ------------ | ------------------------------ |\n| Sat - 03 May | Fundamentals of Algorithm      |\n| Mon - 05 May | Advanced Java                  |\n| Tue - 06 May | Computer Networks              |\n| Wed - 07 May | Software Engineering           |\n| Thu - 08 May | Linear Algebra using Python    |\n| Fri - 09 May | .NET Technologies              |\n| Tue - 13 May | Android Developer Fundamentals |\n\nFind the official notice here -> [https://cs.cdoe.in/note/182](https://cs.cdoe.in/note/182)',4,1,'2025-03-17 03:57:12','2026-04-09 19:47:20'),
+(16,'campaign-2-successful','Campaign 2 was Successful','yashskolambekar2015@gmail.com','Yash','Hello,&#x20;\n\nWe ran a campaign to raise money for a one month subscription of ChatGPT Plus to produce high quality notes for Semester 4. This allowed us to generate notes faster and use larger, superior models which produce accurate results.\n\nThe campaign was started with a goal of Rs 1800 and a total of Rs 2052 was raised by the contributions of our community members.\n\n\nAlthough the final bill that we were charged was of Rupees 2101, the balance is taken care by Ayyub and we have successfully acquired the desired plan of ChatGPT.&#x20;\n\nThe list of contributors is as follows\n\n| Member                               | Amount |\n| ------------------------------------ | ------ |\n| Sameer Parmale                       | 100    |\n| Anjanesh Lekshminarayanan            | 100    |\n| Shaikh sami                          | 52     |\n| Mayur Ghode                          | 581    |\n| Bruno Fernandes                      | 52     |\n| Vaibhav                              | 51     |\n| Shaikh Hafsa                         | 50     |\n| Anam                                 | 50     |\n| Selina dsilva                        | 50     |\n| Purva                                | 50     |\n| Manihar junaid                       | 100    |\n| Shravani                             | 100    |\n| Rahul Mhabdi                         | 100    |\n| abid                                 | 55     |\n| Ravindra Belekar                     | 100    |\n| Srikanth Yelle                       | 100    |\n| Faizan ansari                        | 100    |\n| Remaining Balance from Last Campaign | 210    |\n| Yash                                 | 51     |\n\n\n\nI thank each and every member of the community who has contributed their money in this campaign. This campaign proves once again that we are creating value in our stakeholder\'s educational journey. Thank you once again.',0,1,'2025-04-19 10:35:26','2025-04-19 10:35:44'),
+(17,'getting-ready-for-ty','Getting Ready for TY','yashskolambekar2015@gmail.com','Yash','Hello there,\n\nThis post is for you only if you are in Second year right now and are going to get admission in the Third Year soon. As we all know, things were quite similar in 1st and 2nd year in the terms of format, exams, practicals and almost every aspect. But that will not be the case in the 3rd year of our college.\n\nIn the search of idea about how things will be in the 3rd year. Shadow conversed with our seniors who are in 3rd year right now and got a lot of useful information which will help us buckle up for the coming academic term.\n\n**- Subjects**\n\nWe will be having just 5 subjects in both semester 5 and semester 6. Yes, we do have optional subjects on paper but those are not offered by CDOE, and the extra subjects will be disabled in the admission form itself. So we will be left with 5 subjects which we will have to continue with.\n\n**- PCP Centres**\n\nWe currently have 3 PCP centres, but this will most likely change and we will be reduced to 2 PCP centres. Which may or may not be SJRS Kalwa and Royal College Mira Road. These are the centres which are there for Third year right now, we might or might not get the same ones.\n\n**- Projects**\n\nYes, we will be having 2 projects which need to be submitted to the PCP centres, one in Sem 5 and one in Sem 6. The format of the projects will be pretty standard. You will have to choose a software / hardware based project and propose it to the faculty of your PCP centre, who will approve the idea. The project will be solo, you cannot have a group or a duo. Two students cannot have similar projects, the one proposing first will be allowed to make it.&#x20;\n\nThe evaluation of the project will be done via online meeting or offline presentation (depending on the pcp centre) where the student will need to present it and explain to the faculties. And the black book needs to be submitted physically to the PCP centre.&#x20;\n\nAs of now, these are the important things that we need to know about as we move forward with our degree. All credits to Shadow for researching and taking efforts to find this information.\n\nYou are advised to start building / buying your project to avoid last minute rush.',0,1,'2025-05-28 09:24:29','2025-05-28 09:38:49'),
+(18,'important-links','Important links in the new CDOE website','yashskolambekar2015@gmail.com','Yash','Courtesy: Ganesh\n\n.\n\n**Mumbai University website**\n\n[https://uom.edu.in/](https://uom.edu.in/)\n\n.\n\n**CDOE Web page**\n\n[https://cdoe.uom.edu.in/](https://cdoe.uom.edu.in/)\n\n.\n\n**For Admission Notifications**&#x20;\n\n[https://cdoe.uom.edu.in/sub.php?name=ADMISSION%202025-2026](https://cdoe.uom.edu.in/sub.php?name=ADMISSION%202025-2026)\n\n.\n\n**For Examination form Dates**\n\n[https://cdoe.uom.edu.in/sub.php?name=Exam%20Forms](https://cdoe.uom.edu.in/sub.php?name=Exam%20Forms)\n\n.\n\n**For Date of Commencement of Examinations**\n\n[https://cdoe.uom.edu.in/sub.php?name=Commencement%20Date](https://cdoe.uom.edu.in/sub.php?name=Commencement%20Date)\n\n.\n\n**For Examination Time Table**\n\n[https://cdoe.uom.edu.in/sub.php?name=Exam%20Timetables](https://cdoe.uom.edu.in/sub.php?name=Exam%20Timetables)&#x20;\n\n.\n\n**For Hall Ticket**&#x20;\n\n[https://cdoe.uom.edu.in/sub.php?name=Hall%20Ticket](https://cdoe.uom.edu.in/sub.php?name=Hall%20Ticket)\n\n.\n\n**For Results**\n\n[https://cdoe.uom.edu.in/sub.php?name=Latest%20Results](https://cdoe.uom.edu.in/sub.php?name=Latest%20Results)\n\n.\n\n**CDOE Examination Revaluation**\n\n[https://cdoe.uom.edu.in/sub.php?name=Revaluation](https://cdoe.uom.edu.in/sub.php?name=Revaluation)\n\n.\n\n**University Examination Revaluation**\n\n[https://revalphoto.mu.ac.in/reval/instruction.html](https://revalphoto.mu.ac.in/reval/instruction.html)',0,1,'2025-12-09 16:14:45','2025-12-09 16:16:58'),
+(19,'sem-v-timetable-released','Sem 5 Timetable released','yashskolambekar2015@gmail.com','Yash','Hey there,\n\n\n\nPlease note that Timetable for Semester 5 Exams has been released by CDOE. The exams are scheduled from 30th December 2025 to 5th Jan 2026.\n\n\n\n\n\n| Date        | Day       | Subject                          |\n| ----------- | --------- | -------------------------------- |\n| 30 Dec 2025 | Tuesday   | Artificial Intelligence          |\n| 31 Dec 2025 | Wednesday | Linux Server Administration      |\n| 02 Jan 2025 | Friday    | Information and Network Security |\n| 03 Jan 2025 | Saturday  | Architecting of IOT              |\n| 05 Jan 2025 | Monday    | Game Programming                 |\n\nPlease find the official announcement here [https://cs.cdoe.in/note/284](https://cs.cdoe.in/note/284)',5,1,'2025-12-17 19:16:42','2025-12-17 19:16:48');
+/*!40000 ALTER TABLE `updates` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `google_id` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `superadmin` tinyint(1) NOT NULL DEFAULT 0,
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
+  `semester` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
+
+-- Dump completed on 2026-05-20  0:00:06
